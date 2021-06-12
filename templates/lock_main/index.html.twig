@@ -7,7 +7,35 @@
 {% block body %}
 
     <main class="container">
-        <h2>Anky - ADMIN</h2>
+        {# {{ dump(lockMain) }} #}
+        <h1>Anky - ADMIN</h1>
+
+        {% if lockMain is empty %}
+            <p><em>$lockMain</em> est vide.</p>
+        {% else %}
+            <hr>
+            <h2>Lock</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Title</th>
+                        <th>Text</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for lm in lockMain %}
+                    <tr>
+                        <td>{{ lm.id }}</td>
+                        <td>{{ lm.title }}</td>
+                        <td>{{ lm.text }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        <h4>Ajouter</h4>
+        {{ form(ajout) }}
     </main>
 
 {% endblock %}
