@@ -17,9 +17,32 @@
     {% endfor %}
 
     <h2>Résumé</h2>
-    <p>{{ lockMain.id }}</p>
-    <p>{{ lockMain.title }}</p>
-    <p>{{ lockMain.text }}</p>
+
+    {% if lockMain is defined %}
+
+        {% if lockMain is empty %}
+            <p>Rien n'a été trouvé</p>
+        {% else %}
+            <p><b>ID : </b>{{ lockMain.id }}</p>
+            <p><b>Title : </b>{{ lockMain.title }}</p>
+            <p><b>Question : </b>{{ lockMain.text }}</p>
+        {% endif %}
+
+    {% else %}
+
+        {% if lockQuestion is defined %}
+
+            {% if lockQuestion is empty %}
+                <p>Rien n'a été trouvé</p>
+            {% else %}
+                <p><b>Affilié à :</b> {{ lockQuestion.MainId.title }}</p>
+                <p><b>Choix :</b> {{ lockQuestion.question }}</p>
+                <p><b>Lien :</b> {{ lockQuestion.link }}</p>
+            {% endif %}
+
+        {% endif %}
+
+    {% endif %}
 
     <br>
 

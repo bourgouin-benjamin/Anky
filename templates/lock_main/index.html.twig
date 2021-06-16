@@ -29,6 +29,7 @@
                         <th>Title</th>
                         <th>Text</th>
                         <th>Détails</th>
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,8 @@
                         <td>{{ lm.text }}</td>
                         <td><a href="{{path('lockMain_edit', {'id':lm.id } )}}">
                         Voir</a></td>
+                        <td><a href="{{ path('lockMain_delete', {'id':lm.id}) }}">
+                        Supprimer</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -46,6 +49,39 @@
         {% endif %}
         <h4>Ajouter</h4>
         {{ form(ajout) }}
+
+        <hr>
+        <h2>Lock - Choix</h2>
+
+        {% if lockQuestion is empty %}
+            <p>Aucun choix n'a été trouvé</p>
+        {% else %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>main</th>
+                        <th>Texte</th>
+                        <th>Link</th>
+                        <th>Détails</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lq in lockQuestion %}
+                        <tr>
+                            <td>{{ lq.MainId.title }}</td>
+                            <td>{{ lq.question }}</td>
+                            <td>{{ lq.link }}</td>
+                            <td><a href="{{path('lockQuestion_edit', {'id':lq.id } )}}">
+                            Voir</a></td>
+                            <td>Supprimer</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        <h4>Ajouter</h4>
+        {{ form(ajout2) }}
     </main>
 
 {% endblock %}

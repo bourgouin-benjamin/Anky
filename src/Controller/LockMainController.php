@@ -35,10 +35,20 @@ class LockMainController extends AbstractController
         // LOCK QUESTION
         $lockQuestion = new LockQuestion();
         $form2 = $this->createForm(LockQuestionType::class, $lockQuestion);
+        $form2->handleRequest($request);
+
+        if($form2->isSubmitted() && $form2->isValid()){
+            $em->persist($lockQuestion);
+            $em->flush();
+        }
+
+        $lockQuestion = $em->getRepository(LockQuestion::class)->findAll();
 
         return $this->render('lock_main/index.html.twig', [
             'lockMain' => $lockMain,
             'ajout' => $form->createView(),
+            'lockQuestion' => $lockQuestion,
+            'ajout2' => $form2->createView(),
         ]);
     }
 
@@ -66,5 +76,54 @@ class LockMainController extends AbstractController
             'lockMain' => $lockMain,
             'edit' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/admin/lockMain/delete/{id}", name="lockMain_delete")
+     */
+    public function deleteMain(LockMain $lockMain = null){
+        if($lockMain == null){
+            $this->addFlash('danger', 'Non trouvé !');
+            return $this->redirectToRoute('admin');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($lockMain);
+        $em->flush();
+
+        $this->addFlash('success', 'Suppression effectuée !');
+        return $this->redirectToRoute('admin');
+    }
+
+    /**
+     * @Route("/admin/lockQuestion/edit/{id}", name="lockQuestion_edit")
+     */
+    public function lockQuestion(LockQuestion $lockQuestion = null, Request $request){
+        if($lockQuestion == null){
+            $this->addFlash('danger', 'Choix nn trouvé !');
+            return $this->redirectToRoute("admin");
+        }
+
+        $form2 = $this->createForm(LockQuestionType::class, $lockQuestion);
+        $form2->handleRequest($request);
+
+        if($form2->isSubmitted() && $form2->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($lockQuestion);
+            $em->flush();
+
+            $this->addFlash('success', 'Choix modifié !');
+        }
+
+        return $this->render('lock_main/edit.html.twig', [
+            'lockQuestion' => $lockQuestion,
+            'edit' => $form2->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/lockQuestion/delete/{id}", name="lockQuestion_delete")
+     */
+    public function deleteQuestion(LockQuestion $lockQuestion = null){
     }
 }
