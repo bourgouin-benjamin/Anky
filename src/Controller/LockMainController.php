@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 use App\Entity\LockMain;
+use App\Entity\LockQuestion;
 use App\Form\LockMainType;
+use App\Form\LockQuestionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +19,7 @@ class LockMainController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
+        // LOCK MAIN
         $lockMain = new LockMain();
         $form = $this->createForm(LockMainType::class, $lockMain);
         $form->handleRequest($request);
@@ -27,6 +30,11 @@ class LockMainController extends AbstractController
         }
 
         $lockMain = $em->getRepository(LockMain::class)->findAll();
+
+
+        // LOCK QUESTION
+        $lockQuestion = new LockQuestion();
+        $form2 = $this->createForm(LockQuestionType::class, $lockQuestion);
 
         return $this->render('lock_main/index.html.twig', [
             'lockMain' => $lockMain,

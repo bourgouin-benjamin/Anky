@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LockMainRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class LockMain
      * @ORM\Column(type="text")
      */
     private $text;
+
+    /**
+     * @ORM\OneToMany(targetEntity=LockQuestion::class, mappedBy="main_id")
+     */
+    private $question;
+
+    public function __construct()
+    {
+        $this->question = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +64,36 @@ class LockMain
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LockQuestion[]
+     */
+    public function getQuestion(): Collection
+    {
+        return $this->question;
+    }
+
+    public function addQuestion(LockQuestion $question): self
+    {
+        if (!$this->question->contains($question)) {
+            $this->question[] = $question;
+            $question->setMainId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuestion(LockQuestion $question): self
+    {
+        if ($this->question->removeElement($question)) {
+            // set the owning side to null (unless already changed)
+            if ($question->getMainId() === $this) {
+                $question->setMainId(null);
+            }
+        }
 
         return $this;
     }
