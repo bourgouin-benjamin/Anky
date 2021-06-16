@@ -33,4 +33,30 @@ class LockMainController extends AbstractController
             'ajout' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/admin/lockMain/{id}", name="lockMain_edit")
+     */
+    public function lockMain(LockMain $lockMain = null, Request $request){
+        if($lockMain == null){
+            $this->addFlash('danger', 'Non trouvé, essayez avec une autre ID.');
+            return $this->redirectToRoute('admin');
+        }
+
+        $form = $this->createForm(LockMainType::class, $lockMain);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($lockMain);
+            $em->flush();
+
+            $this->addFlash('success', 'Modifié !');
+        }
+
+        return $this->render('lock_main/edit.html.twig', [
+            'lockMain' => $lockMain,
+            'edit' => $form->createView(),
+        ]);
+    }
 }

@@ -8,6 +8,13 @@
 
     <main class="container">
         {# {{ dump(lockMain) }} #}
+
+        {% for type, messages in app.flashes %}
+            {% for un_message in messages %}
+                <p class="alert alert-{{type}}">{{ un_message }}</p>
+            {% endfor %}
+        {% endfor %}
+
         <h1>Anky - ADMIN</h1>
 
         {% if lockMain is empty %}
@@ -21,6 +28,7 @@
                         <th>id</th>
                         <th>Title</th>
                         <th>Text</th>
+                        <th>Détails</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +37,8 @@
                         <td>{{ lm.id }}</td>
                         <td>{{ lm.title }}</td>
                         <td>{{ lm.text }}</td>
+                        <td><a href="{{path('lockMain_edit', {'id':lm.id } )}}">
+                        Voir</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
