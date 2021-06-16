@@ -21,11 +21,10 @@
             <p><em>$lockMain</em> est vide.</p>
         {% else %}
             <hr>
-            <h2>Lock</h2>
+            <h2>Lock - Catégorie</h2>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>id</th>
                         <th>Title</th>
                         <th>Text</th>
                         <th>Détails</th>
@@ -35,7 +34,6 @@
                 <tbody>
                 {% for lm in lockMain %}
                     <tr>
-                        <td>{{ lm.id }}</td>
                         <td>{{ lm.title }}</td>
                         <td>{{ lm.text }}</td>
                         <td><a href="{{path('lockMain_edit', {'id':lm.id } )}}">
@@ -74,7 +72,8 @@
                             <td>{{ lq.link }}</td>
                             <td><a href="{{path('lockQuestion_edit', {'id':lq.id } )}}">
                             Voir</a></td>
-                            <td>Supprimer</td>
+                            <td><a href="{{path('lockQuestion_delete', {'id':lq.id } )}}">
+                            Supprimer</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

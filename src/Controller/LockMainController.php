@@ -125,5 +125,16 @@ class LockMainController extends AbstractController
      * @Route("/admin/lockQuestion/delete/{id}", name="lockQuestion_delete")
      */
     public function deleteQuestion(LockQuestion $lockQuestion = null){
+        if($lockQuestion == null){
+            $this->addFlash('denger', 'Choix non trouvé !');
+            return $this->redirectToRoute('admin');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($lockQuestion);
+        $em->flush();
+
+        $this->addFlash('success', 'Choix supprimé !');
+        return $this->redirectToRoute('admin');
     }
 }
