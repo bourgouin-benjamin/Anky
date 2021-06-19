@@ -139,13 +139,6 @@ class LockMainController extends AbstractController
     }
 
     /**
-     * @Route("/lock", name="lockStart")
-     */
-    public function lockStart(){
-        $this->redirectToRoute('lock', 1);
-    }
-
-    /**
      * @Route("/lock/{id}", name="lock")
      */
     public function lock($id)
