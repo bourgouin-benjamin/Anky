@@ -10,6 +10,12 @@
 
 <main class="container">
 
+    <a href="/admin">Admin Accueil</a>
+    <br>
+    <a href="/lock/1">Lock</a>
+    <br>
+    <hr>
+
     {% for type, messages in app.flashes %}
         {% for un_message in messages %}
             <p class="alert alert-{{type}}">{{ un_message }}</p>

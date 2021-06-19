@@ -137,4 +137,30 @@ class LockMainController extends AbstractController
         $this->addFlash('success', 'Choix supprimé !');
         return $this->redirectToRoute('admin');
     }
+
+    /**
+     * @Route("/lock", name="lockStart")
+     */
+    public function lockStart(){
+        $this->redirectToRoute('lock', 1);
+    }
+
+    /**
+     * @Route("/lock/{id}", name="lock")
+     */
+    public function lock($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $lockMain = $em->getRepository(LockMain::class)->findAll();
+        $lockQuestion = $em->getRepository(LockQuestion::class)->findAll();
+
+        $etape = $id;
+
+        return $this->render('lock_main/lock.html.twig', [
+            'lockMain' => $lockMain,
+            'lockQuestion'=> $lockQuestion,
+            'etape' => $etape,
+        ]);
+    }
 }
