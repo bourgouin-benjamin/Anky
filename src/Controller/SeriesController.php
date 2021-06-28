@@ -4,8 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Categorie;
 use App\Form\CategorieType;
+
 use App\Entity\Genre;
 use App\Form\GenreType;
+
+use App\Entity\Series;
+use App\Form\SerieType;
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -48,11 +52,28 @@ class SeriesController extends AbstractController
 
         $genre = $em->getRepository(Genre::class)->findAll();
 
+
+        // SERIE
+        $serie = new Series();
+        $formSerie = $this->createForm(SerieType::class, $serie);
+        $formSerie->handleRequest($request);
+
+        if($formSerie->isSubmitted() && $formSerie->isValid()){
+            $em->persist($serie);
+            $em->flush();
+        }
+
+        $serie = $em->getRepository(Series::class)->findALl();
+
+
+
         return $this->render('series/index.html.twig', [
             'categorie' => $categorie,
             'ajoutCategorie' => $formCat->createView(),
             'genre' => $genre,
             'ajoutGenre' => $formGen->createView(),
+            'serie' => $serie,
+            'ajoutSerie' => $formSerie->createView(),
         ]);
     }
 }

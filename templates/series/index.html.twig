@@ -56,4 +56,38 @@
         </table>
     {% endif %}
     {{ form(ajoutGenre) }}
+
+
+    <hr>
+
+    {% if serie is empty %}
+        <p>Aucune série trouvé</p>
+    {% else %}
+        <h1>Séries</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>keywords</th>
+                    <th>categorie</th>
+                    <th>genre</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in serie %}
+                    <tr>
+                        <td>{{ s.nom }}</td>
+                        <td>{{ s.keywords }}</td>
+                        <td>{{ s.categorie.cat }}</td>
+                        <td>{{ s.genre.gen }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    {{ form(ajoutSerie) }}
 {% endblock %}
