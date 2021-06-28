@@ -8,6 +8,52 @@
     {% if categorie is empty %}
         <p>Aucune catégorie trouvée</p>
     {% else %}
-        <p>Ca marche</p>
+        <h1>Catégories</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Catégorie</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in categorie%}
+                    <tr>
+                        <td>{{ c.cat }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
+    {{ form(ajoutCategorie) }}
+
+    <hr>
+
+    {% if genre is empty %}
+        <p>Aucun genre trouvé</p>
+    {% else %}
+        <h1>Genre</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Genre</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for g in genre%}
+                    <tr>
+                        <td>{{ g.gen }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    {{ form(ajoutGenre) }}
 {% endblock %}
