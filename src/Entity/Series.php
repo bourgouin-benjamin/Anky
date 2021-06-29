@@ -28,7 +28,12 @@ class Series
     private $keywords;
 
     /**
-     * @ORM\ManyToOne(targetEntity=categorie::class, inversedBy="series")
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $resume;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="series")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
@@ -68,12 +73,24 @@ class Series
         return $this;
     }
 
-    public function getCategorie(): ?categorie
+    public function getResume(): ?string
+    {
+        return $this->resume;
+    }
+
+    public function setResume(?string $resume): self
+    {
+        $this->resume = $resume;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
     {
         return $this->categorie;
     }
 
-    public function setCategorie(?categorie $categorie): self
+    public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
 

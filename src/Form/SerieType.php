@@ -20,6 +20,7 @@ class SerieType extends AbstractType
         $builder
             ->add('nom')
             ->add('keywords')
+            ->add('resume')
             ->add('categorie', EntityType::class,[
                 'class' => Categorie::class,
                 'choice_label' => 'cat'

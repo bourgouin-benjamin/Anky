@@ -5,10 +5,19 @@
 {% endblock %}
 
 {% block body %}
+
+    {% for type, messages in app.flashes %}
+        {% for un_message in messages %}
+            <p class="alert alert-{{type}}">{{ un_message }}</p>
+        {% endfor %}
+    {% endfor %}
+
+    <h1>Séries - Admin</h1>
+
     {% if categorie is empty %}
         <p>Aucune catégorie trouvée</p>
     {% else %}
-        <h1>Catégories</h1>
+        <h2>Catégories</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -21,13 +30,16 @@
                 {% for c in categorie%}
                     <tr>
                         <td>{{ c.cat }}</td>
-                        <td></td>
-                        <td></td>
+                        <td><a href={{ path('categorie_edit', {'id':c.id}) }}
+                        class="btn btn-success">edit</a></td>
+                        <td><a href={{ path('categorie_delete', {'id':c.id}) }}
+                        class="btn btn-danger">supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% endif %}
+    <h3>Ajouter</h3>
     {{ form(ajoutCategorie) }}
 
     <hr>
@@ -35,7 +47,7 @@
     {% if genre is empty %}
         <p>Aucun genre trouvé</p>
     {% else %}
-        <h1>Genre</h1>
+        <h2>Genre</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -48,13 +60,16 @@
                 {% for g in genre%}
                     <tr>
                         <td>{{ g.gen }}</td>
-                        <td></td>
-                        <td></td>
+                        <td><a href={{ path('genre_edit', {'id':g.id}) }}
+                        class="btn btn-success">edit</a></td>
+                        <td><a href={{ path('genre_delete', {'id':g.id}) }}
+                        class="btn btn-danger">supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% endif %}
+    <h3>Ajouter</h3>
     {{ form(ajoutGenre) }}
 
 
@@ -63,7 +78,7 @@
     {% if serie is empty %}
         <p>Aucune série trouvé</p>
     {% else %}
-        <h1>Séries</h1>
+        <h2>Séries</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -71,6 +86,7 @@
                     <th>keywords</th>
                     <th>categorie</th>
                     <th>genre</th>
+                    <th>resumé</th>
                     <th>Modifier</th>
                     <th>Supprimer</th>
                 </tr>
@@ -82,12 +98,16 @@
                         <td>{{ s.keywords }}</td>
                         <td>{{ s.categorie.cat }}</td>
                         <td>{{ s.genre.gen }}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ s.resume }}</td>
+                        <td><a href={{ path('serie_edit', {'id':s.id}) }}
+                        class="btn btn-success">edit</a></td>
+                        <td><a href={{ path('serie_delete', {'id':s.id}) }}
+                        class="btn btn-danger">supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% endif %}
+    <h3>Ajouter</h3>
     {{ form(ajoutSerie) }}
 {% endblock %}
