@@ -37,10 +37,22 @@
                     <p>Aucune série trouvée</p>
                 {% else %}
                     <p>Nom : <b>{{ serie.nom }}</b></p>
-                    <p>Mots associés : <b>{{ serie.keywords }}</b></p>
+                    <p>Mots associés : <b>{% for kw in serie.keywords %}
+                                {{kw}}
+                            {% else %}
+                                Aucun keywords
+                            {% endfor %}</b></p>
                     <p>Résumé : <b>{{ serie.resume }}</b></p>
-                    <p>Catégorie liée : <b>{{ serie.categorie.cat }}</b></p>
-                    <p>Genre lié : <b>{{ serie.genre.gen }}</b></p>
+                    <p>Catégorie liée : <b>{% for c in serie.categorie %}
+                                {{c}}
+                            {% else %}
+                                Aucun catégorie
+                            {% endfor %}</b></p>
+                    <p>Genre lié : <b>{% for g in serie.genre %}
+                                {{g}}
+                            {% else %}
+                                Aucun keywords
+                            {% endfor %}</b></p>
                 {% endif %}
             {% endif %}
         {% endif %}

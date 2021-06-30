@@ -25,13 +25,19 @@ class Categorie
     private $cat;
 
     /**
-     * @ORM\OneToMany(targetEntity=Series::class, mappedBy="categorie")
+     * @ORM\ManyToMany(targetEntity=Series::class, mappedBy="categorie")
      */
     private $series;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Compte::class, mappedBy="categorie")
+     */
+    private $comptes;
 
     public function __construct()
     {
         $this->series = new ArrayCollection();
+        $this->comptes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -63,7 +69,7 @@ class Categorie
     {
         if (!$this->series->contains($series)) {
             $this->series[] = $series;
-            $series->setCategorie($this);
+            $series->addTest($this);
         }
 
         return $this;
@@ -72,10 +78,38 @@ class Categorie
     public function removeSeries(Series $series): self
     {
         if ($this->series->removeElement($series)) {
-            // set the owning side to null (unless already changed)
-            if ($series->getCategorie() === $this) {
-                $series->setCategorie(null);
-            }
+            $series->removeTest($this);
+        }
+
+        return $this;
+    }
+
+    public function __toString(){
+        return $this->cat;
+    }
+
+    /**
+     * @return Collection|Compte[]
+     */
+    public function getComptes(): Collection
+    {
+        return $this->comptes;
+    }
+
+    public function addCompte(Compte $compte): self
+    {
+        if (!$this->comptes->contains($compte)) {
+            $this->comptes[] = $compte;
+            $compte->addCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompte(Compte $compte): self
+    {
+        if ($this->comptes->removeElement($compte)) {
+            $compte->removeCategorie($this);
         }
 
         return $this;

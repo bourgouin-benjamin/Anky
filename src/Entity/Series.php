@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\SeriesRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=SeriesRepository::class)
@@ -33,16 +35,22 @@ class Series
     private $resume;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="series")
+     * @ORM\ManyToMany(targetEntity=Categorie::class, inversedBy="series")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Genre::class, inversedBy="series")
+     * @ORM\ManyToMany(targetEntity=Genre::class, inversedBy="series")
      * @ORM\JoinColumn(nullable=false)
      */
     private $genre;
+
+    public function __construct()
+    {
+        $this->categorie = new ArrayCollection();
+        $this->genre = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,9 +69,9 @@ class Series
         return $this;
     }
 
-    public function getKeywords(): ?string
+    public function getKeywords()
     {
-        return $this->keywords;
+        return json_decode($this->keywords);
     }
 
     public function setKeywords(?string $keywords): self
@@ -85,26 +93,50 @@ class Series
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getCategorie(): ?Collection
     {
         return $this->categorie;
     }
 
-    public function setCategorie(?Categorie $categorie): self
+    public function addCategorie(Categorie $categorie): self
     {
-        $this->categorie = $categorie;
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie[] = $categorie;
+        }
 
         return $this;
     }
 
-    public function getGenre(): ?Genre
+    public function removeCategorie(Categorie $categorie): self
+    {
+        $this->categorie->removeElement($categorie);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getGenre(): ?Collection
     {
         return $this->genre;
     }
 
-    public function setGenre(?Genre $genre): self
+    public function addGenre(Genre $genre): self
     {
-        $this->genre = $genre;
+        if (!$this->genre->contains($genre)) {
+            $this->genre[] = $genre;
+        }
+
+        return $this;
+    }
+
+    public function removeGenre(Genre $genre): self
+    {
+        $this->genre->removeElement($genre);
 
         return $this;
     }

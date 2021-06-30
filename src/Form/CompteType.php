@@ -2,26 +2,33 @@
 
 namespace App\Form;
 
-use App\Entity\Series;
+use App\Entity\Compte;
 use App\Entity\Categorie;
 use App\Entity\Genre;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SerieType extends AbstractType
+class CompteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('keywords', TextType::class, ['mapped'=>false])
-            ->add('resume')
+            ->add('mail')
+            ->add('mdp')
+            ->add('confirm_mdp')
+            ->add('username')
+            ->add('birth', DateType::class, [
+                'years' => [
+                            "2020",
+                            "2021"
+                            ]
+            ])
             ->add('categorie', EntityType::class,[
                 'class' => Categorie::class,
                 'choice_label' => 'cat',
@@ -39,7 +46,7 @@ class SerieType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Series::class,
+            'data_class' => Compte::class,
         ]);
     }
 }

@@ -59,6 +59,10 @@ class SeriesController extends AbstractController
         $formSerie->handleRequest($request);
 
         if($formSerie->isSubmitted() && $formSerie->isValid()){
+            // dd();
+            $keywords = explode(',', $request->request->get('serie')['keywords']);
+            $serie->setKeywords(json_encode($keywords));
+
             $em->persist($serie);
             $em->flush();
         }
@@ -143,6 +147,9 @@ class SeriesController extends AbstractController
         $formSerie->handleRequest($request);
 
         if($formSerie->isSubmitted() && $formSerie->isValid()){
+            $keywords = explode(',', $request->request->get('serie')['keywords']);
+            $serie->setKeywords(json_encode($keywords));
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($serie);
             $em->flush();

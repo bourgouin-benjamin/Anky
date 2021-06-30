@@ -33,10 +33,10 @@
                     <tr>
                         <td>{{ lm.title }}</td>
                         <td>{{ lm.text }}</td>
-                        <td><a href="{{path('lockMain_edit', {'id':lm.id } )}}">
-                        Voir</a></td>
-                        <td><a href="{{ path('lockMain_delete', {'id':lm.id}) }}">
-                        Supprimer</a></td>
+                        <td><a href="{{path('lockMain_edit', {'id':lm.id } )}}"
+                        class="btn btn-success">Voir</a></td>
+                        <td><a href="{{ path('lockMain_delete', {'id':lm.id}) }}"
+                        class="btn btn-danger">Supprimer</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -67,10 +67,10 @@
                             <td>{{ lq.MainId.title }}</td>
                             <td>{{ lq.question }}</td>
                             <td>{{ lq.link }}</td>
-                            <td><a href="{{path('lockQuestion_edit', {'id':lq.id } )}}">
-                            Voir</a></td>
-                            <td><a href="{{path('lockQuestion_delete', {'id':lq.id } )}}">
-                            Supprimer</a></td>
+                            <td><a href="{{path('lockQuestion_edit', {'id':lq.id } )}}"
+                            class="btn btn-success">Voir</a></td>
+                            <td><a href="{{path('lockQuestion_delete', {'id':lq.id } )}}"
+                            class="btn btn-danger">Supprimer</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
