@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 class CompteController extends AbstractController
 {
     /**
@@ -25,6 +27,12 @@ class CompteController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+
+            if($compte->getMdp() != $compte->getConfirmMdp()){
+                $this->addFlash('danger', 'Les mots de passes indiqués sont différents. Veuillez entrer deux mots de passe identiques.');
+                return $this->redirectToRoute('compte');
+            }
+
             $em->persist($compte);
             $em->flush();
             
