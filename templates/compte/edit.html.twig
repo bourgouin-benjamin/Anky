@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+{% endblock %}
+
+
+{% block body %}
+
+    {% for type, messages in app.flashes %}
+        {% for un_message in messages %}
+            <p class="alert alert-{{type}}">{{ un_message }}</p>
+        {% endfor %}
+    {% endfor %}
+
+    {% if compte is empty %}
+        <p>Aucun compte trouvé</p>
+    {% else %}
+        <h2>Détail du compte :</h2>
+        <p>Mail : <b>{{ compte.mail }}</b></p>
+        <p>Mot de passe : <b>{{ compte.mdp }}</b></p>
+        <p>Nom d'utilisateur : <b>{{ compte.username }}</b></p>
+        <p>Date de naissance : <b>{{ compte.birth|date("d/m/Y") }}</b></p>
+        <p>Genre : <b>
+            {% for genre in compte.genre %}
+                {{genre}}
+            {% else %}
+                Aucun genre
+            {% endfor %}
+            </b></p>
+    {% endif %}
+
+    {{ form(edit) }}
+    
+{% endblock %}
