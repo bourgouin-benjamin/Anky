@@ -4,14 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Compte;
 use App\Form\CompteType;
+use App\Form\ConnexionType;
 
 use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class CompteController extends AbstractController
 {
@@ -93,5 +92,24 @@ class CompteController extends AbstractController
 
         $this->addFlash('success', 'Compte supprimé');
         return $this->redirectToRoute('compte');
+    }
+
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function connexion(Request $request) :Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createFrom(ConnexionType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+        }
+
+        return $this->render('index.html.twig', [
+            'connexion' => $form->createView(),
+        ]);
     }
 }
