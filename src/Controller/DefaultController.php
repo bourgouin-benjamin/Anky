@@ -21,35 +21,11 @@ class DefaultController extends AbstractController
      */
     public function connexion(Request $request, Connection $connection) :Response
     {
-        // $this->getUser()
 
-        // if($this->getUser()->getPseudo() == null){
-        //     return $this->redirectToRoute("mon-compte");
-        // }
-
-
-
-        $compte = new Compte();
-
-        $em = $this->getDoctrine()->getManager();
-
-        $form = $this->createForm(ConnexionType::class);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-            $thisMail = $form->get('mail');
-            var_dump($thisMail);
-            $recup = $em->getRepository(Compte::class)->findOneByMail($thisMail);
-
-            return $this->render('default/index.html.twig', [
-                'connexion' => $form->createView(),
-                'test' => $thisMail,
-            ]);
+        if($this->getUser() == null){
+            return $this->redirectToRoute('login');
         }
 
-
-        return $this->render('default/index.html.twig', [
-            'connexion' => $form->createView(),
-        ]);
+        return $this->redirectToRoute("mon-compte");
     }
 }

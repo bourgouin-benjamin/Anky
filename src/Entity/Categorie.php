@@ -29,15 +29,9 @@ class Categorie
      */
     private $series;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Compte::class, mappedBy="categorie")
-     */
-    private $comptes;
-
     public function __construct()
     {
         $this->series = new ArrayCollection();
-        $this->comptes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,30 +82,4 @@ class Categorie
         return $this->cat;
     }
 
-    /**
-     * @return Collection|Compte[]
-     */
-    public function getComptes(): Collection
-    {
-        return $this->comptes;
-    }
-
-    public function addCompte(Compte $compte): self
-    {
-        if (!$this->comptes->contains($compte)) {
-            $this->comptes[] = $compte;
-            $compte->addCategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCompte(Compte $compte): self
-    {
-        if ($this->comptes->removeElement($compte)) {
-            $compte->removeCategorie($this);
-        }
-
-        return $this;
-    }
 }

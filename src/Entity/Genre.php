@@ -30,14 +30,14 @@ class Genre
     private $series;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Compte::class, mappedBy="genre")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="genre")
      */
-    private $comptes;
+    private $users;
 
     public function __construct()
     {
         $this->series = new ArrayCollection();
-        $this->comptes = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,27 +89,27 @@ class Genre
     }
 
     /**
-     * @return Collection|Compte[]
+     * @return Collection|User[]
      */
-    public function getComptes(): Collection
+    public function getUsers(): Collection
     {
-        return $this->comptes;
+        return $this->users;
     }
 
-    public function addCompte(Compte $compte): self
+    public function addUser(User $user): self
     {
-        if (!$this->comptes->contains($compte)) {
-            $this->comptes[] = $compte;
-            $compte->addGenre($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addGenre($this);
         }
 
         return $this;
     }
 
-    public function removeCompte(Compte $compte): self
+    public function removeUser(User $user): self
     {
-        if ($this->comptes->removeElement($compte)) {
-            $compte->removeGenre($this);
+        if ($this->users->removeElement($user)) {
+            $user->removeGenre($this);
         }
 
         return $this;
