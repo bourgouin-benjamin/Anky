@@ -58,21 +58,25 @@ class DefaultController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
-        $keywords = '';
+        $keywords = $user->getKeywordsBloque();
 
         foreach ($serie->getKeywords() as $kw) {
-            $keywords == '' ?
-                $keywords .= $kw
-            :
-                $keywords .= ','.$kw;
+            if($keywords == ''){
+                $keywords = [$kw];
+            }
+            else{
+                if(!in_array($kw, $keywords)){
+                    array_push($keywords, $kw);
+                }
+            }
         }
 
-        $keywordsBloque = explode(',', $keywords);
-
-        $user->setKeywordsBloque(json_encode($keywordsBloque));
+        $user->setKeywordsBloque(json_encode($keywords));
 
         $em->persist($user);
         $em->flush();
+
+        $this->addFlash('success', 'Mots bloqués avec succès');
 
         return $this->redirectToRoute('mon-compte');
     }

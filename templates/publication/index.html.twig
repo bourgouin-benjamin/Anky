@@ -13,4 +13,31 @@
     {% endfor %}
 
     <h1>Publications - Admin</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Hashtag</th>
+                <th>Post</th>
+                <th>edit</th>
+                <th>suppr</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in publi %}
+                <tr>
+                    <td>{{p.username}}</td>
+                    <td>
+                        {% for h in p.hashtag %}
+                            {{h}}
+                        {% endfor %}
+                    </td>
+                    <td>{{p.post}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{form(ajout)}}
 {% endblock %}

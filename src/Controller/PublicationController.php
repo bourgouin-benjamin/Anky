@@ -22,10 +22,13 @@ class PublicationController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $publi = new Publications();
-        $form = $this->createForm(Publications::class, $publi);
+        $form = $this->createForm(PublicationsType::class, $publi);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            $hashtag = explode(',', $request->request->get('publications')['hashtag']);
+            $publi->setHashtag(json_encode($hashtag));
+
             $em->persist($publi);
             $em->flush();
 
@@ -34,7 +37,7 @@ class PublicationController extends AbstractController
 
         $publi = $em->getRepository(Publications::class)->findAll();
 
-        return $this->render('publications/index.html.twig', [
+        return $this->render('publication/index.html.twig', [
             'publi' => $publi,
             'ajout' => $form->createView(),
         ]);
