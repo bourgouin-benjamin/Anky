@@ -67,7 +67,7 @@ class SeriesController extends AbstractController
             $em->flush();
         }
 
-        $serie = $em->getRepository(Series::class)->findALl();
+        $serie = $em->getRepository(Series::class)->findAll();
 
 
 

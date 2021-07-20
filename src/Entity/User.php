@@ -49,6 +49,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $genre;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $keywordsBloque;
+
     public function __construct()
     {
         $this->genre = new ArrayCollection();
@@ -171,6 +176,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeGenre(Genre $genre): self
     {
         $this->genre->removeElement($genre);
+
+        return $this;
+    }
+
+    public function getKeywordsBloque()
+    {
+        return json_decode($this->keywordsBloque);
+    }
+
+    public function setKeywordsBloque(?string $keywordsBloque): self
+    {
+        $this->keywordsBloque = $keywordsBloque;
 
         return $this;
     }

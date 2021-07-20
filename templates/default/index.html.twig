@@ -12,8 +12,66 @@
         {% endfor %}
     {% endfor %}
 
-    {# {{ dump(test) }} #}
+    {{ dump(user) }}
 
-    <h1>Connexion</h1>
-   {{ form(connexion) }} 
+    <p>{{user.email}}</p>
+    <p>{{user.pseudo}}</p>
+
+    <h2>Vos genres favoris :</h2>
+    <ul>
+        {% for g in user.genre %}
+            <li>{{g}}</li>
+        {% endfor %}
+    </ul>
+
+    {% if user.keywordsBloque != null %}
+        <h2>Vos mots bloqués</h2>
+        <ul>
+            {% for kw in user.keywordsBloque %}
+                <li>{{kw}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    <hr>
+    <h2>Vos suggestions</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Genre</th>
+                <th>Keywords</th>
+                <th>No spoil</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in serie %}
+
+                {% for gSerie in s.genre %}
+                    {% for gUser in user.genre %}
+                        {% if gSerie == gUser %}
+                            <tr>
+                                <td>{{s.nom}}</td>
+                                <td>
+                                    {% for g in s.genre %}
+                                        {{g}}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for kw in s.keywords %}
+                                        {{kw}}
+                                    {% endfor %}
+                                </td>
+                                <td><a href={{path('bloquer', {'id':s.id})}} 
+                                class="btn btn-danger">Bloquer la série</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
