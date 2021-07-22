@@ -54,6 +54,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $keywordsBloque;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $series_bloque;
+
     public function __construct()
     {
         $this->genre = new ArrayCollection();
@@ -188,6 +193,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setKeywordsBloque(?string $keywordsBloque): self
     {
         $this->keywordsBloque = $keywordsBloque;
+
+        return $this;
+    }
+
+    public function getSeriesBloque()/*: ?string*/
+    {
+        return json_decode($this->series_bloque);
+    }
+
+    public function setSeriesBloque(/*?string*/ $series_bloque): self
+    {
+        $this->series_bloque = $series_bloque;
 
         return $this;
     }

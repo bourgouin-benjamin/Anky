@@ -33,6 +33,15 @@
         </ul>
     {% endif %}
 
+    {% if user.seriesBloque != null %}
+        <h2>Vos séries bloqués</h2>
+        <ul>
+            {% for sb in user.seriesBloque%}
+                <li>{{sb}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <br>
     <hr>
     <h2>Vos suggestions</h2>
@@ -63,9 +72,18 @@
                                     {% for kw in s.keywords %}
                                         {{kw}}
                                     {% endfor %}
+                                    {# {{ dump(s.keywords) }} #}
                                 </td>
-                                <td><a href={{path('bloquer', {'id':s.id})}} 
-                                class="btn btn-danger">Bloquer la série</a></td>
+
+                                <td>
+                                    {% if s.nom in user.seriesBloque %}
+                                        <a href={{path('debloquer', {'id':s.id})}} 
+                                        class="btn btn-danger">Débloquer la série</a>
+                                    {% else %}
+                                        <a href={{path('bloquer', {'id':s.id})}} 
+                                        class="btn btn-success">Bloquer la série</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                         {% endif %}
                     {% endfor %}
@@ -74,4 +92,33 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <h2>Publications</h2>
+    {% for p in publi %}
+    {# {{dump(p.post)}}
+    {{dump(p.hashtag)}} #}
+        {% set errors = 0 %}
+        {% for kw in user.keywordsBloque %}
+        {# {{dump(kw)}} #}
+            {% if kw|lower in p.post|lower or kw|lower in p.hashtag %}
+                {% set errors = errors + 1 %}
+            {% endif %}
+        {% endfor %}
+
+        {% if errors > 0 %}
+            <div class="blocked">
+                <p>Série bloquée par Anky</p>
+            </div>
+        {% else %}
+            <div>
+                <p><b>{{p.username}}</b></p>
+                <p><em>
+                    #{{ p.hashtag|join(', #') }} 
+                </em></p>
+                <p>{{p.post}}</p>
+            </div>
+        {% endif %}
+            
+    {% endfor %}
+
 {% endblock %}

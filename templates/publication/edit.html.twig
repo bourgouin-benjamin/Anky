@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for type, messages in app.flashes %}
+        {% for un_message in messages %}
+            <p class="alert alert-{{type}}">{{ un_message }}</p>
+        {% endfor %}
+    {% endfor %}
+
+    <h1>Publication - Admin - Editer</h1>
+    <hr>
+    {% if publi is empty %}
+        <p>Aucune série trouvée</p>
+    {% else %}
+        {{dump(publi.username)}}
+        <p>User : <b>{{ publi.username }}</b></p>
+        <p>Hashtag :<em>
+                    #{{ publi.hashtag|join(', #') }} 
+                </em></p>
+        <p>Post : {{ publi.post }}</p>
+    {% endif %}
+
+    {{ form(edit) }}
+
+{% endblock %}

@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=SeriesRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Series
 {
@@ -46,6 +47,11 @@ class Series
      */
     private $genre;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
@@ -74,7 +80,7 @@ class Series
         return json_decode($this->keywords);
     }
 
-    public function setKeywords(?string $keywords): self
+    public function setKeywords($keywords): self
     {
         $this->keywords = $keywords;
 
@@ -139,5 +145,27 @@ class Series
         $this->genre->removeElement($genre);
 
         return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function deleteImage(){
+        if($this->image != null){
+            $chemin = __DIR__.'/../../public/uploads/'.$this->image;
+            unlink($chemin);
+        }
     }
 }

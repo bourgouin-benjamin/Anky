@@ -1,7 +1,6 @@
-/* body{
-    background: red;
+.blocked{
+    background:red;
+    font-size:20px;
+    font-weight:bold;
+    color:white;
 }
-
-.maClass{
-    width:500px;
-} */

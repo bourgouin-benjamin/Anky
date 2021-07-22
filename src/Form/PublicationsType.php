@@ -18,7 +18,7 @@ class PublicationsType extends AbstractType
     {
         $builder
             ->add('username')
-            ->add('hashtag')
+            ->add('hashtag', TextType::class, ['mapped'=>false])
             ->add('post')
             ->add('Envoyer', SubmitType::class)
         ;

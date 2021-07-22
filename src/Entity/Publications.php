@@ -49,12 +49,12 @@ class Publications
         return $this;
     }
 
-    public function getHashtag(): ?string
+    public function getHashtag()/*: ?string*/
     {
-        return $this->hashtag;
+        return json_decode($this->hashtag);
     }
 
-    public function setHashtag(string $hashtag): self
+    public function setHashtag(/*string*/ $hashtag): self
     {
         $this->hashtag = $hashtag;
 

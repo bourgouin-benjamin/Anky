@@ -61,10 +61,27 @@ class SeriesController extends AbstractController
         if($formSerie->isSubmitted() && $formSerie->isValid()){
             // dd();
             $keywords = explode(',', $request->request->get('serie')['keywords']);
+            foreach($keywords as $k => $v){
+                $keywords[$k] = trim($v);
+            }
             $serie->setKeywords(json_encode($keywords));
 
+            $imageFile = $formSerie->get('image')->getData();
+            if ($imageFile) {
+                $newFilename = uniqid().'.'.$imageFile->guessExtension();
+                try {
+                    $imageFile->move(
+                        $this->getParameter('upload_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // error
+                }
+                $serie->setImage($newFilename);
+            }
+
             $em->persist($serie);
-            $em->flush();
+            $em->flush(); 
         }
 
         $serie = $em->getRepository(Series::class)->findAll();
@@ -148,7 +165,24 @@ class SeriesController extends AbstractController
 
         if($formSerie->isSubmitted() && $formSerie->isValid()){
             $keywords = explode(',', $request->request->get('serie')['keywords']);
+            foreach($keywords as $k => $v){
+                $keywords[$k] = trim($v);
+            }
             $serie->setKeywords(json_encode($keywords));
+
+            $imageFile = $formSerie->get('image')->getData();
+            if ($imageFile) {
+                $newFilename = uniqid().'.'.$imageFile->guessExtension();
+                try {
+                    $imageFile->move(
+                        $this->getParameter('upload_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // error
+                }
+                $serie->setImage($newFilename);
+            }
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($serie);
