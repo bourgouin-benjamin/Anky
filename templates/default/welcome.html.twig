@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<section class="absolute welcome">
+
+    <img src="/img/logo.svg" alt="">
+
+    <h1>Hello, tu en as marre de te faire spoiler ?<br>
+    Voici <strong>Anky</strong> ton nouvel anti-spoiler !</h1>
+
+    <article>
+        <div>
+            <p>Nouveau sur notre app ?</p>
+            <a href="{{path('app_register')}}" title="">Je m'inscris</a>
+        </div>
+
+        <p>ou</p>
+
+        <div>
+            <p>Déjà inscrit(e) ?</p>
+            <a href="{{path('app_login')}}" title="">Me connecter</a>
+        </div>
+    </article>
+
+</section>
+
+{% endblock %}

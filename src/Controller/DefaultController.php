@@ -24,10 +24,17 @@ class DefaultController extends AbstractController
     {
 
         if($this->getUser() == null){
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('welcome');
         }
 
         return $this->redirectToRoute("mon-compte");
+    }
+
+    /**
+     * @Route("/welcome", name="welcome")
+     */
+    public function welcome(Connection $connection){
+        return $this->render('default/welcome.html.twig');
     }
 
     /**
