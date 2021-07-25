@@ -13,18 +13,18 @@
 .background::after{
     content:'';
     position:fixed;
-    width:165px;
-    height:165px;
+    width:495px;
+    height:495px;
     border-radius:100%;
 }   
 
 .background::before{
     background:var(--pink);
-    top:20px;
-    left:-40px;
+    top:30px;
+    left:-90px;
 }
 .background::after{
     background:var(--blue);
-    bottom:200px;
-    right:-30px;
+    bottom:400px;
+    right:-90px;
 }

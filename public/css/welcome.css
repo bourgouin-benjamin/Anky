@@ -4,12 +4,12 @@
     justify-content:space-between;
     align-items:center;
     overflow:hidden;
-    padding:150px 24px;
+    padding:200px 75px;
     box-sizing:border-box;
 }
 
 .welcome img{
-    width:105px;
+    width:315px;
 }
 
 .welcome h1{
@@ -33,16 +33,16 @@
     font-size:var(--s);
     color:var(--white);
     text-align:center;
-    margin:0 0 20px 0;
+    margin:0 0 60px 0;
 }
 .welcome article div a{
     font-family: var(--main);
     font-size: var(--s);
     color: var(--white);
     text-align:center;
-    padding:10px 45px;
+    padding:30px 135px;
     box-sizing:border-box;
-    border-radius:50px;
+    border-radius:150px;
     margin:auto;
 }
 
