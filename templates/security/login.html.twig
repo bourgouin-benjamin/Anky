@@ -3,22 +3,37 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<section class="absolute login">
 
-    {% if app.user %}
+<a href="{{path('welcome')}}" alt="">
+    <i class="fas fa-chevron-left"></i>
+</a>
+
+<article>
+        <img src="/img/logo-small.svg" title="">
+        <h1>Okayyyyy...</h1>
+</article>
+
+<form method="post" class="form">
+    {# {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %} #}
+
+    {# {% if app.user %}
         <div class="mb-3">
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
-    {% endif %}
+    {% endif %} #}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <div>
+        <label for="inputEmail">E-mail</label>
+        <input type="email" name="email" id="inputEmail" class="input" required>
+    </div>
+
+    <div>
+        <label for="inputPassword">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="input" required>
+    </div>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
@@ -35,8 +50,12 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+    <button type="submit">
+        Let's gooooo
     </button>
+
 </form>
+</section>
+
+<script src="/script/floatingLabel.js"></script>
 {% endblock %}
