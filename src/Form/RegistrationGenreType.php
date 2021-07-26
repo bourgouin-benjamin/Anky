@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class RegistrationFormType extends AbstractType
+class RegistrationGenreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

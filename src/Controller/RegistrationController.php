@@ -40,7 +40,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('registration_genre');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -48,24 +48,24 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/register2", name="registration_genre")
-     */
-    public function registerGenre(Request $request){
-        $user = new User();
-        $form = $this->createForm(RegistrationGenreTYpe::class, $user);
-        $form->handleRequest($request);
+    // /**
+    //  * @Route("/register2", name="registration_genre")
+    //  */
+    // public function registerGenre(Request $request){
+    //     $user = new User();
+    //     $form = $this->createForm(RegistrationGenreTYpe::class, $user);
+    //     $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+    //     if($form->isSubmitted() && $form->isValid()) {
+    //         $em = $this->getDoctrine()->getManager();
+    //         $em->persist($user);
+    //         $em->flush();
 
-            return $this->redirectToRoute('app_login');
-        }
+    //         return $this->redirectToRoute('app_login');
+    //     }
 
-        return $this->render('registration/registerGenre.html.twig', [
-            'addGendre' => $form->createView(),
-        ]);
-    }
+    //     return $this->render('registration/registerGenre.html.twig', [
+    //         'addGenre' => $form->createView(),
+    //     ]);
+    // }
 }

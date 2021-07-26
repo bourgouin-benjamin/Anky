@@ -22,11 +22,11 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email')
-            // ->add('genre', EntityType::class,[
-            //     'class' => Genre::class,
-            //     'choice_label' => 'gen',
-            //     'multiple' => true
-            // ])
+            ->add('genre', EntityType::class,[
+                'class' => Genre::class,
+                'choice_label' => 'gen',
+                'multiple' => true
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

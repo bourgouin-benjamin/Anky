@@ -56,6 +56,15 @@
             </span>
         </div>
 
+        <article class="break">
+            <h1>Une dernière étape...</h1>
+            <p>Dis nous les genres de séries que tu aimes</p>
+        </article>
+
+        {{ form_row(registrationForm.genre, {
+            label: " ",
+        }) }}
+
         <button type="submit" class="btn">C'est parti</button>
     {{ form_end(registrationForm) }}
 
@@ -63,5 +72,6 @@
 
 <script src="/script/floatingLabel.js"></script>
 <script src="/script/checkmark.js"></script>
+<script src="/script/genreSelected.js"></script>
 
 {% endblock %}
