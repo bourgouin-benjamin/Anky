@@ -99,7 +99,78 @@
 }
 
 .register .form div label.floatingLabel{
-    font-size:35px;
+    font-size:var(--xs);
     top:-60px;
     left:0;
+}
+
+.register .form div:nth-child(4){
+    display:block;
+    position:relative;
+    width:100%;
+    height:auto;
+    z-index:3;
+}
+
+.register .form div:nth-child(4) label{
+    position:absolute;
+    top: 0px;
+    left:80px;
+    color:var(--white);
+    font-size:var(--xs);
+}
+
+.register .form div:nth-child(4) .check{
+    position:absolute;
+    opacity:0;
+    cursor:pointer;
+    height:53px;
+    width:53px;
+    z-index:1;
+}
+
+.register .form div:nth-child(5){
+    width:100%;
+    height:auto;
+    position:relative;
+    transform:translateY(-95px);
+    z-index:-1;
+}
+
+.register .form div:nth-child(5) .checkmark{
+    position:absolute;
+    height:45px;
+    width:45px;
+    background:var(--black);
+    border:solid 4px var(--greyBorder);
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.register .form div:nth-child(5) .checkmark i{
+    color:var(--white);
+    font-size:var(--xs);
+    display:none;
+}
+
+.register .form div:nth-child(5) .checkmark.isChecked{
+    background:var(--gradient);
+}
+.register .form div:nth-child(5) .checkmark i.isChecked{
+    display:block;
+}
+
+.register .form button{
+    font-family: var(--main);
+    font-size: var(--s);
+    color: var(--white);
+    text-align:center;
+    padding:30px 135px;
+    box-sizing:border-box;
+    border-radius:150px;
+    margin:auto;
+    background:var(--gradient);
+    border:none;
 }
