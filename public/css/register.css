@@ -1,0 +1,105 @@
+.register{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    overflow:hidden;
+    padding:200px 75px;
+    box-sizing:border-box;
+}
+
+.register > a{
+    position:absolute;
+    top:150px;
+    left:75px;
+}
+
+.register > a i{
+    color:var(--white);
+    font-size:60px;
+}
+
+.register article{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.register article img{
+    width:100px;
+}
+
+.register h1{
+    font-family: var(--main);
+    font-size: var(--xl);
+    color: var(--white);
+    text-align:center;
+    margin:100px 0 150px 0;
+}
+
+.register .form{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.register .form div{
+    width:100%;
+    height:auto;
+    margin:0 0 100px 0;
+    position:relative;
+}
+
+.register .form div .input{
+    width:100%;
+    height:auto;
+    padding:45px 60px;
+    box-sizing:border-box;
+    background:transparent;
+    border:solid 4px var(--greyBorder);
+    font-size:var(--s);
+    border-radius:30px;
+    color:var(--white);
+}
+
+.register .form div .input:focus{
+    background: 
+    linear-gradient(var(--black), var(--black)) padding-box,
+    linear-gradient(to bottom right, var(--pink), var(--blue)) border-box;
+    border:solid 4px transparent;
+    outline:none;
+}
+
+.register .form div .input:valid{
+    background: 
+    linear-gradient(var(--black), var(--black)) padding-box,
+    linear-gradient(to bottom right, var(--pink), var(--blue)) border-box;
+    border:solid 4px transparent;
+    outline:none;
+}
+
+.register .form div label{
+    position:absolute;
+    top: 45px;
+    left:60px;
+    font-family:var(--main);
+    font-size:var(--s);
+    color:var(--greyBorder);
+    transition:all 0.3s ease-out;
+}
+
+.register .form div label.fontColor{
+    color:var(--white);
+}
+
+.register .form div label.floatingLabel{
+    font-size:35px;
+    top:-60px;
+    left:0;
+}

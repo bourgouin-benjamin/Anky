@@ -62,3 +62,7 @@
     font-size:var(--m);
     color:var(--white);
 }
+
+.welcome h1 strong{
+    text-transform:uppercase;
+}
