@@ -1,20 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-{% endblock %}
-
 {% block body %}
 
-    {% for type, messages in app.flashes %}
+    <section class="absolute dashboard">
+
+        <header>
+
+            <a href="#" alt="">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+
+            <img src="/img/logo-small.svg" title="">
+
+            <a href="#" alt="">
+                <i class="far fa-bell"></i>
+            </a>
+
+        </header>
+
+    </section>
+
+    {# {% for type, messages in app.flashes %}
         {% for un_message in messages %}
             <p class="alert alert-{{type}}">{{ un_message }}</p>
         {% endfor %}
     {% endfor %}
 
-    {{ dump(user) }}
+    {{ dump(user) }} #}
 
-    <p>{{user.email}}</p>
+    {# <p>{{user.email}}</p>
     <p>{{user.pseudo}}</p>
 
     <h2>Vos genres favoris :</h2>
@@ -73,7 +87,7 @@
                                         {{kw}}
                                     {% endfor %}
                                     {# {{ dump(s.keywords) }} #}
-                                </td>
+                                {# </td>
 
                                 <td>
                                     {% if s.nom in user.seriesBloque %}
@@ -94,13 +108,13 @@
     </table>
 
     <h2>Publications</h2>
-    {% for p in publi %}
+    {% for p in publi %} #}
     {# {{dump(p.post)}}
     {{dump(p.hashtag)}} #}
-        {% set errors = 0 %}
-        {% for kw in user.keywordsBloque %}
+        {# {% set errors = 0 %}
+        {% for kw in user.keywordsBloque %} #}
         {# {{dump(kw)}} #}
-            {% if kw|lower in p.post|lower or kw|lower in p.hashtag %}
+            {# {% if kw|lower in p.post|lower or kw|lower in p.hashtag %}
                 {% set errors = errors + 1 %}
             {% endif %}
         {% endfor %}
@@ -119,6 +133,6 @@
             </div>
         {% endif %}
             
-    {% endfor %}
+    {% endfor %}  #}
 
 {% endblock %}
