@@ -9,6 +9,7 @@ header{
     align-items:flex-start;
     padding:0 75px;
     box-sizing:border-box;
+    z-index:10;
 }
 
 header img{

@@ -2,12 +2,16 @@
 
     /* COLORS */
     --black: #101010;
-    --blackOverlay: rgba(10,10,10,0.7); 
+    --blackOverlay: rgba(10,10,10,0.7);
     --white: #F3F3F3;
     --greyBloc: #1B1B1B;
     --greyBorder: #353535;
     --blue: #3B29FF;
+    --blueNav: rgba(56, 41, 255, 0.6);
+    --blueNavHighlight: rgba(56, 41, 255, 0);
     --pink: #FF2674;
+    --pinkNav: rgba(255, 38, 116, 0.4);
+    --pinkNavHighlight: rgba(255, 38, 116, 0);
 
     /* GRADIENT */
     --gradient: linear-gradient(to bottom right, var(--pink), var(--blue));

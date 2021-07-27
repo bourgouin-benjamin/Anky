@@ -5,7 +5,6 @@
     <section class="absolute dashboard">
 
         <header>
-
             <a href="#" alt="">
                 <i class="fas fa-chevron-left"></i>
             </a>
@@ -15,10 +14,70 @@
             <a href="#" alt="">
                 <i class="far fa-bell"></i>
             </a>
-
         </header>
 
+        <main>
+            <h1>Mon dashboard <strong>Anky</strong></h1>
+
+            <section class="container">
+                <h2>Les plus spoilées<br>de la semaine</h2>
+
+                <div class="nowrap">
+                {% for s in serie %}
+                    {% for c in s.categorie %}
+
+                        {% if c == "Les plus spoilées" %}
+
+                        <article>
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <div class="overlay">
+                                <p>{{s.nom}}</p>
+                                <p>{{ random(50, 1000)}} spoils détectés</p>
+                                <div class="btn-bloquer">
+                                    <a href="#" title="">Bloquer</a>
+                                </div>
+                            </div>
+                            <div class="epingle">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                        </article>
+
+                        {% endif %}
+
+                    {% endfor %}
+                {% endfor %}
+                </div>
+
+            </section>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="highlight"><img src="/img/burger.png" alt=""></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="highlight"><img src="/img/loupe.png" alt=""></i></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="/img/hexagon.svg" alt="">
+                            <img src="/img/ankylochoups.svg" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="highlight"><img src="/img/bookmark.png" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#" class="actif highlight"><img src="/img/canva.png" alt=""></a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
     </section>
+
+    <script src="/script/epingle.js"></script>
 
     {# {% for type, messages in app.flashes %}
         {% for un_message in messages %}

@@ -1,0 +1,153 @@
+.dashboard main{
+    position:absolute;
+    top:275px;
+    left:0;
+    width:100%;
+    height:auto;
+    padding:50px 0;
+    box-sizing:border-box;
+}
+
+.dashboard h1{
+    font-family:var(--secondary);
+    color:var(--white);
+    font-size:var(--s);
+    font-weight:300;
+    text-align:center;
+    margin:0 0 100px 0;
+    padding:0 75px;
+    box-sizing:border-box;
+}
+
+.dashboard h1 strong{
+    text-transform:uppercase;
+}
+
+.dashboard h2{
+    font-family: var(--main);
+    font-size:var(--xl);
+    color:var(--white);
+    margin:0 0 60px 0;
+    padding:0 0 0 75px;
+    box-sizing:border-box;
+}
+
+.dashboard .container{
+    width:100%;
+    height:auto;
+}
+
+.dashboard .container .nowrap{
+    width:auto;
+    height:auto;
+    overflow:auto;
+    white-space:nowrap;
+}
+
+.dashboard .container .nowrap article{
+    display:inline-block;
+    width:600px;
+    height:600px;
+    position:relative;
+    overflow:hidden;
+    border-radius:50px;
+    margin:0 45px 0 0;
+    background:transparent;
+}
+.dashboard .container .nowrap article:first-child{
+    margin:0 45px 0 75px;
+}
+.dashboard .container .nowrap article:last-child{
+    margin:0 75px 0 0;
+}
+
+.dashboard .container .nowrap img{
+    min-width:600px;
+    min-height:600px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    z-index:0;
+}
+
+.dashboard .container .nowrap .overlay{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    width:calc(100% - 60px);
+    height:auto;
+    padding:30px;
+    box-sizing:border-box;
+    border-radius:50px;
+    background:var(--blackOverlay);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+    -ms-backdrop-filter: blur(5px);
+    -o-backdrop-filter: blur(5px);
+}
+
+.dashboard .container .nowrap .overlay p:first-child{
+    font-family:var(--main);
+    font-size:var(--m);
+    color:var(--white);
+    margin:0 0 10px 0;
+}
+.dashboard .container .nowrap .overlay p:nth-child(2){
+    font-family:var(--secondary);
+    font-size:var(--xs);
+    color:var(--white);
+    font-weight:300;
+    margin:0 0 30px 0;
+}
+
+.dashboard .container .nowrap .overlay .btn-bloquer{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.dashboard .container .nowrap .overlay a{
+    font-family: var(--main);
+    font-size: var(--s);
+    color: var(--white);
+    text-align:center;
+    padding:25px 100px;
+    box-sizing:border-box;
+    border-radius:150px;
+    margin:50px auto 0 auto;
+    border:none;
+    display:inline-block;
+    margin:auto;
+    background:var(--blue);
+}
+
+.dashboard .container .nowrap .epingle{
+    color:var(--white);
+    background:var(--greyBloc);
+    width:100px;
+    height:100px;
+    border-radius:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:absolute;
+    top:30px;
+    right:30px;
+    background: 
+    linear-gradient(var(--black), var(--black)) padding-box,
+    linear-gradient(to bottom right, var(--pink), var(--blue)) border-box;
+    border:solid 4px transparent;
+}
+.dashboard .container .nowrap .epingle i{
+    font-size:45px;
+}
+
+.dashboard .container .nowrap .epingle.actif{
+    background: 
+    linear-gradient(var(--pink), var(--blue)) border-box,
+    linear-gradient(to bottom right, var(--pink), var(--blue)) border-box;
+}
