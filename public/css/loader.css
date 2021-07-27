@@ -1,0 +1,38 @@
+.loader{
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:99;
+    background:var(--greyBloc);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    animation-name:loading;
+    animation-duration: 6.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+.loader img{
+    width:150%;
+}
+
+@keyframes loading{
+    0%{
+        opacity:1;
+    }
+
+    95%{
+        opacity:1;
+        z-index:99;
+    }
+
+    100%{
+        opacity:0;
+        z-index:-99;
+    }
+}
+

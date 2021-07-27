@@ -4,6 +4,10 @@
 
     <section class="absolute dashboard">
 
+    <div class="loader">
+        <img src="/img/loader.gif" title="">
+    </div>
+
         <header>
             <a href="#" alt="">
                 <i class="fas fa-chevron-left"></i>
@@ -27,6 +31,99 @@
                     {% for c in s.categorie %}
 
                         {% if c == "Les plus spoilées" %}
+
+                        <article>
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <div class="overlay">
+                                <p>{{s.nom}}</p>
+                                <p>{{ random(50, 1000)}} spoils détectés</p>
+                                <div class="btn-bloquer">
+                                    <a href="#" title="">Bloquer</a>
+                                </div>
+                            </div>
+                            <div class="epingle">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                        </article>
+
+                        {% endif %}
+
+                    {% endfor %}
+                {% endfor %}
+                </div>
+
+            </section>
+
+            <section class="container">
+                <h2>Pour moi</h2>
+
+                <div class="nowrap">
+                {% for s in serie %}
+                    {% for c in s.categorie %}
+
+                        {% if c == "Pour moi" %}
+
+                        <article>
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <div class="overlay">
+                                <p>{{s.nom}}</p>
+                                <p>{{ random(50, 1000)}} spoils détectés</p>
+                                <div class="btn-bloquer">
+                                    <a href="#" title="">Bloquer</a>
+                                </div>
+                            </div>
+                            <div class="epingle">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                        </article>
+
+                        {% endif %}
+
+                    {% endfor %}
+                {% endfor %}
+                </div>
+
+            </section>
+
+            <section class="container">
+                <h2>Nouveautés</h2>
+
+                <div class="nowrap">
+                {% for s in serie %}
+                    {% for c in s.categorie %}
+
+                        {% if c == "Nouveautés" %}
+
+                        <article>
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <div class="overlay">
+                                <p>{{s.nom}}</p>
+                                <p>{{ random(50, 1000)}} spoils détectés</p>
+                                <div class="btn-bloquer">
+                                    <a href="#" title="">Bloquer</a>
+                                </div>
+                            </div>
+                            <div class="epingle">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                        </article>
+
+                        {% endif %}
+
+                    {% endfor %}
+                {% endfor %}
+                </div>
+
+            </section>
+
+            <section class="container">
+                <h2>Actualité</h2>
+
+                <div class="nowrap">
+                {% for s in serie %}
+                    {% for c in s.categorie %}
+
+                        {% if c == "Actualité" %}
 
                         <article>
                             <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
