@@ -11,13 +11,13 @@
     align-items:center;
 
     animation-name:loading;
-    animation-duration: 6.5s;
+    animation-duration: 3.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
 }
 
 .loader img{
-    width:150%;
+    width:60%;
 }
 
 @keyframes loading{

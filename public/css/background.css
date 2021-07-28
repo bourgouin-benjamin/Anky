@@ -4,7 +4,7 @@
     position:fixed;
     top:0;
     left:0;
-    background:var(--black);
+    background:var(--blackOverlay);
     z-index:-3;
 }
 
