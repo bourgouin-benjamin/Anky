@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : Dim 25 juil. 2021 à 18:21
+-- Généré le : mer. 28 juil. 2021 à 14:49
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.12
 
@@ -38,7 +38,7 @@ CREATE TABLE `categorie` (
 INSERT INTO `categorie` (`id`, `cat`) VALUES
 (1, 'Actualité'),
 (2, 'Les plus spoilées'),
-(3, 'Pour vous'),
+(3, 'Pour moi'),
 (4, 'Nouveautés'),
 (5, 'Mes favoris'),
 (7, 'Mes séries bloquées');
@@ -94,11 +94,15 @@ CREATE TABLE `genre` (
 
 INSERT INTO `genre` (`id`, `gen`) VALUES
 (1, 'Thriller'),
-(3, 'Psychologique'),
 (5, 'Drame'),
 (6, 'Policier'),
 (8, 'Fantastique'),
-(9, 'Comédie');
+(9, 'Comédie'),
+(10, 'Action'),
+(11, 'Ados'),
+(12, 'Horreur'),
+(13, 'Romance'),
+(14, 'Science-fiction');
 
 -- --------------------------------------------------------
 
@@ -218,10 +222,19 @@ CREATE TABLE `series` (
 --
 
 INSERT INTO `series` (`id`, `nom`, `keywords`, `resume`, `image`) VALUES
-(5, 'Wanda Vision', '[\"Wanda\",\"Vision\",\"Marvel\"]', 'Produite par les studios Marvel, “WandaVision” mélange le style des sitcoms classiques avec l\'univers Marvel. Wanda Maximoff (Elizabeth Olsen) et Vision (Paul Bettany), deux super-héros menant une vie des plus normales, commencent à se douter que celle-ci n\'est pas aussi parfaite qu’elle en a l\'air. Une nouvelle série réalisée par Matt Shakman avec Jac Shaeffer comme scénariste principale.', '60f9496b5b9b6.jpg'),
+(5, 'Wanda Vision', '[\"Wanda\",\"Maximoff\",\"Vision\",\"MCU\",\"Marvel\",\"Sorci\\u00e8re Rouge\",\"WandaVision\"]', 'Produite par les studios Marvel, “WandaVision” mélange le style des sitcoms classiques avec l\'univers Marvel. Wanda Maximoff (Elizabeth Olsen) et Vision (Paul Bettany), deux super-héros menant une vie des plus normales, commencent à se douter que celle-ci n\'est pas aussi parfaite qu’elle en a l\'air. Une nouvelle série réalisée par Matt Shakman avec Jac Shaeffer comme scénariste principale.', '60f9496b5b9b6.jpg'),
 (16, 'Rick & Morty', '[\"Rick\",\"Morty\",\"AdultSwim\"]', 'Rick, chercheur brillant, mais porté sur la bouteille, emmène son petit-fils timoré Morty dans d\'autres mondes et dimensions où il lui fait vivre de folles escapades.', '60f948c0a97ce.jpg'),
-(19, 'Stranger Things', '[\"Horreur\",\"Etrange\",\"Paranormal\",\"StrangerThings\"]', 'Quand un jeune garçon disparaît, une petite ville découvre une affaire mystérieuse, des expériences secrètes, des forces surnaturelles terrifiantes... et une fillette.', '60f9498f03a72.jpg'),
-(22, 'Sweet Tooth', '[\"Sweet\",\"tooth\",\"sweettooth\",\"hybrides\",\"gus\",\"jappered\"]', 'Dans un monde post-apocalyptique rempli de dangers, une adorable créature mi-cerf, mi-garçon aspire à un nouveau départ aux côtés d\'un protecteur bourru.', '60f949edadeb0.jpg');
+(19, 'Stranger Things', '[\"Stranger\",\"Things\",\"Stranger Things\",\"Will Byers\",\"Byers\"]', 'Quand un jeune garçon disparaît, une petite ville découvre une affaire mystérieuse, des expériences secrètes, des forces surnaturelles terrifiantes... et une fillette.', '60f9498f03a72.jpg'),
+(22, 'Sweet Tooth', '[\"Sweet Tooth\",\"Sweet\",\"Tooth\",\"Gus\",\"Jappered\"]', 'Dans un monde post-apocalyptique rempli de dangers, une adorable créature mi-cerf, mi-garçon aspire à un nouveau départ aux côtés d\'un protecteur bourru.', '60f949edadeb0.jpg'),
+(24, 'Breaking Bad', '[\"Breaking Bad\",\"Breaking\",\"Bad\",\"Walther White\",\"Walther\",\"White\"]', 'Un professeur de chimie atteint d\'un cancer s\'associe à un ancien élève pour fabriquer et vendre de la méthamphétamine afin d\'assurer l\'avenir financier de sa famille.', '61005545564cb.png'),
+(25, 'La casa de papel', '[\"Casa De Papel\",\"Papel\",\"Casa\",\"Professeur\",\"Berlin\",\"Tokyo\",\"Nairobi\",\"Denver\",\"Helsinki\"]', 'Huit voleurs font une prise d\'otages dans la Maison royale de la Monnaie d\'Espagne, tandis qu\'un génie du crime manipule la police pour mettre son plan à exécution.', '610055f6c7c03.jpg'),
+(26, 'Brooklyn Nine-Nine', '[\"Brooklyn Nine-Nine\",\"Brooklyn\",\"Nine-Nine\",\"99\",\"Jake Peralta\",\"Peralta\"]', 'L’arrivée au commissariat d\'un capitaine très strict force Jake Peralta, jeune flic de Brooklyn brillant mais immature, à enfin obéir aux règles et travailler en équipe.', '61005697e2329.jpg'),
+(27, 'The Walking Dead', '[\"Walking Dead\",\"Walking\",\"Dead\",\"Rodeurs\",\"Rick Grimes\",\"Grimes\",\"Negan\"]', 'Dans un monde apocalyptique sous l\'emprise des zombies, des rescapés se rassemblent afin de lutter pour leur survie et de préserver leur humanité.', '610057ddb458a.jpg'),
+(30, 'Mes premières fois', '[\"Premi\\u00e8res Fois\",\"Nerver Have I Ever\",\"Devi Vishwakumar\",\"Vishwakuma\"]', 'Après une année traumatisante, une ado indo-américaine intello transparente décide de devenir hyper populaire. Mais rien, ni personne, ne lui facilite la tâche.', '61005a675ef38.jpg'),
+(31, 'Loki', '[\"Loki\",\"Thanos\",\"Tesseract\",\"Marvel\",\"Thor\",\"Odin\",\"Tom Hiddleston\",\"Hiddleston\"]', 'Le méchant lunatique Loki (Tom Hiddleston) reprend son rôle de dieu de la malice dans \"Loki\", la nouvelle série des studios Marvel qui se déroule après \"Avengers : Endgame\". Kate Herron en est la réalisatrice et Michael Waldron le principal scénariste.', '61005ca19e27c.jpg'),
+(32, 'Love, Victor', '[\"Love Victor\",\"Victor\",\"Benjy\",\"Victor Salazar\",\"Salazar\",\"Michael Cimino\",\"Cimino\"]', 'Quand la famille de Victor Salazar quitte le Texas rural pour s\'installer à Atlanta, il espère que son nouveau lycée dans une grande ville sera un endroit propice à sa quête identitaire et lui permettra de prendre un nouveau départ. Mais le jour de son arrivée au lycée de Creekwood, Victor se rend compte que les choses ne seront pas aussi simples et il prend contact avec Simon pour lui demander conseil.', '61005d2b5501b.jpg'),
+(33, 'The Mandalorian', '[\"Mandalorian\",\"Star Wars\",\"Empire\",\"Din Djarin\",\"Djarin\",\"Pedro Pascal\",\"Baby Yoda\",\"Yoda\",\"Sith\",\"Jedi\"]', 'Après la chute de l\'Empire, un chasseur de primes solitaire parcourt une galaxie sans foi ni loi.', '61005ed359de1.jpg'),
+(34, 'Dark', '[\"Dark\",\"Jonas Kahnwald\",\"Kahnwald\",\"Mikkel\",\"Ulrich Nielsen\",\"Nielsen\",\"Marta\"]', 'Quatre familles affolées par la disparition d\'un enfant cherchent des réponses et tombent sur un mystère impliquant trois générations qui finit de les déstabiliser.', '610151a998f9e.jpg');
 
 -- --------------------------------------------------------
 
@@ -240,13 +253,24 @@ CREATE TABLE `series_categorie` (
 
 INSERT INTO `series_categorie` (`series_id`, `categorie_id`) VALUES
 (5, 1),
-(5, 4),
 (16, 3),
-(16, 7),
 (19, 2),
 (19, 5),
 (22, 1),
-(22, 3);
+(22, 3),
+(24, 3),
+(25, 1),
+(26, 2),
+(27, 2),
+(30, 3),
+(30, 4),
+(31, 1),
+(31, 2),
+(31, 3),
+(32, 4),
+(33, 4),
+(34, 2),
+(34, 3);
 
 -- --------------------------------------------------------
 
@@ -265,12 +289,40 @@ CREATE TABLE `series_genre` (
 
 INSERT INTO `series_genre` (`series_id`, `genre_id`) VALUES
 (5, 8),
-(5, 9),
+(5, 10),
 (16, 9),
-(19, 3),
-(19, 8),
+(16, 11),
+(16, 14),
+(19, 12),
+(19, 14),
 (22, 5),
-(22, 8);
+(22, 8),
+(24, 1),
+(24, 5),
+(24, 6),
+(25, 1),
+(25, 5),
+(25, 6),
+(26, 6),
+(26, 9),
+(27, 5),
+(27, 8),
+(27, 12),
+(30, 5),
+(30, 9),
+(30, 11),
+(30, 13),
+(31, 8),
+(31, 9),
+(31, 10),
+(32, 9),
+(32, 11),
+(32, 13),
+(33, 8),
+(33, 10),
+(33, 14),
+(34, 5),
+(34, 14);
 
 -- --------------------------------------------------------
 
@@ -298,7 +350,11 @@ INSERT INTO `user` (`id`, `email`, `roles`, `password`, `pseudo`, `keywords_bloq
 (6, 'test@mail.com', '[]', '$2y$13$/q4HfQeKFKFOSvlt8GJbMuBZQH2iGBcFB9QGvqvFARPIb.22XJmNa', 'test', '[\"Rick\",\" Morty\",\" AdultSwim \",\"Horreur\",\" Etrange\",\" Netflix\",\" Paranormal\",\" Monstres\",\"StrangerThings\",\" Stranger\",\" Things\",\"test\",\"test2\",\"test3\"]', '[\"Rick & Moty\",\"Stranger Things\",\"test\"]'),
 (7, 'nicuu@mail.com', '[]', '$2y$13$CEW024tnuzul9NKK2Gn5He/9t2H0Xiwjs9BNJ.Casvm7Czu9gCRxy', 'Oui', '[]', NULL),
 (8, 'benjamin.burkarth@hotmail.com', '[]', '$2y$13$VnfUMkEbhI44eprClt/uzulHGQlM8NQpVb/Q26E9P.GRlsvn4M4eW', 'Benjy', '[\"Horreur\",\"Etrange\",\"Paranormal\",\"StrangerThings\",\"Wanda\",\"Vision\",\"Marvel\"]', '[\"Stranger Things\",\"Wanda Vision\"]'),
-(9, 'mathis@mail.com', '[]', '$2y$13$XEbxKaeA7WmP2J5ZUiD1buYzqK8pUrv4juNB83FG/YbwYcLkjezdK', 'Gollum', '[]', '[]');
+(9, 'mathis@mail.com', '[]', '$2y$13$XEbxKaeA7WmP2J5ZUiD1buYzqK8pUrv4juNB83FG/YbwYcLkjezdK', 'Gollum', '[]', '[]'),
+(10, 'testmail@mail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$md+Y8KdniukCnFZlzX35dA$b9ryj6XUniCK6d7aQjQOJVuOglEJdtaWfqhfh1XUZds', 'tosTESTas', NULL, NULL),
+(11, 'thisisatest@mail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$g/sv/l7/sbAD39NrsEvvOw$CoHd4Cir97+xj2ezsQxd0XekYmqQjtWjMVZBZwVZZyk', 'tosTESTas', NULL, NULL),
+(12, 'encoreuntest@mail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$+TjOW91My/o/NvXCium35Q$oQEANufWIjrTetLo+70e06wKxNL6ROSPgUOi8LPK6wY', 'testos', NULL, NULL),
+(13, 'mail@mail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$Aa5H9YfWQboXtMy5+UPADg$Q+KvnnXG0EqXlJsmx6/w2V97fSxMZvxs0g6yoxFAm0U', 'pepito', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -317,23 +373,23 @@ CREATE TABLE `user_genre` (
 
 INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES
 (4, 1),
-(4, 3),
 (4, 5),
 (4, 6),
 (4, 8),
 (4, 9),
 (6, 1),
-(6, 3),
 (6, 5),
 (6, 6),
 (6, 8),
 (6, 9),
-(7, 3),
 (7, 5),
 (8, 8),
 (9, 5),
 (9, 8),
-(9, 9);
+(9, 9),
+(11, 6),
+(12, 1),
+(13, 8);
 
 --
 -- Index pour les tables déchargées
@@ -427,7 +483,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `lock_main`
@@ -451,13 +507,13 @@ ALTER TABLE `publications`
 -- AUTO_INCREMENT pour la table `series`
 --
 ALTER TABLE `series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Contraintes pour les tables déchargées
