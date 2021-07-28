@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<section class="absolute details">
+
+    <header>
+        <a href={{path('mon-compte')}} alt="">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+
+        <img src="/img/logo-small.svg" title="">
+
+        <a href="#" alt="">
+            <i class="far fa-bell"></i>
+        </a>
+    </header>
+
+    <main>
+
+        <h1>Bloquer la série <strong>{{serie.nom}}</strong></h1>
+
+        <article>
+            <img src="{{ asset('/uploads/' ~ serie.image) }}" alt="">
+            <div class="overlay">
+                <p>{{serie.nom}}</p>
+                <p>{{ random(50, 1000)}} spoils détectés</p>
+            </div>
+            <div class="epingle"> 
+                <i class="far fa-bookmark"></i>
+            </div>
+        </article>
+
+        {% if serie.nom in user.seriesBloque %}
+        <a href={{ path('debloquer', {'id':serie.id}) }} title=""
+        class="debloquer">
+            <p>Série bloquée</p>
+            <div class="shape">
+                <div class="circle"></div>
+            </div>
+        </a>
+        <div class="clear"></div>
+        {% else %}
+        <a href={{ path('bloquer', {'id':serie.id}) }} title=""
+        class="bloquer">
+            <p>Bloquer la série</p>
+            <div class="shape">
+                <div class="circle"></div>
+            </div>
+        </a>
+        {% endif %}
+
+        <article class="synopsis">
+            <p>Synopsis</p>
+            <p>{{ serie.resume }}</p>
+        </article>
+
+        <article class="keywords">
+            <h2>Mots-clés associés</h2>
+            {% for kw in serie.keywords %}
+
+            <p class="kw">{{kw}}</p>
+
+            {% endfor %}
+        </article>
+
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="highlight"><img src="/img/burger.png" alt=""></i></a>
+                </li>
+                <li>
+                    <a href="#" class="highlight"><img src="/img/loupe.png" alt=""></i></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/img/hexagon.svg" alt="">
+                        <img src="/img/ankylochoups.svg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="highlight"><img src="/img/bookmark.png" alt=""></a>
+                </li>
+                <li>
+                    <a href={{path('mon-compte')}} class="highlight"><img src="/img/canva.png" alt=""></a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+</section>
+
+<script src="/script/epingle.js"></script>
+
+{% endblock %}

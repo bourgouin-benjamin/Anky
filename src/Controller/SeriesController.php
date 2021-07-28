@@ -247,4 +247,20 @@ class SeriesController extends AbstractController
         $this->addFlash('success', 'Série supprimée');
         return $this->redirectToRoute('series');
     }
+
+    /**
+     * @Route("/anky/bloquer-serie/{id}", name="details-serie")
+     */
+    public function detailsSerie(Series $serie = null){
+        if($serie == null){
+            return $this->redirectToRoute('mon-compte');
+        }
+
+        $user = $this->getUser();
+
+        return $this->render('series/details.html.twig', [
+            'serie' => $serie,
+            'user' => $user
+        ]);
+    }
 }

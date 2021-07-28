@@ -16,6 +16,10 @@ header img{
     width:100px;
 }
 
+header a:first-child{
+    width:75px;
+}
+
 
 header a:first-child i{
     color:var(--white);

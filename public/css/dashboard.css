@@ -142,6 +142,7 @@
     linear-gradient(var(--black), var(--black)) padding-box,
     linear-gradient(to bottom right, var(--pink), var(--blue)) border-box;
     border:solid 4px transparent;
+    box-shadow:0 5px 25px 1px rgba(0,0,0,0.5);
 }
 .dashboard .container .nowrap .epingle i{
     font-size:45px;

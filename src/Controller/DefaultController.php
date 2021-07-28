@@ -107,7 +107,7 @@ class DefaultController extends AbstractController
 
         $this->addFlash('success', 'Série bloquée avec succès');
 
-        return $this->redirectToRoute('mon-compte');
+        return $this->redirectToRoute('details-serie', ['id' => $serie->getId()]);
     }
 
     /**
@@ -146,6 +146,6 @@ class DefaultController extends AbstractController
 
         $this->addFlash('danger', 'La série n\'est désormais plus bloquée... Attention aux spoils !');
 
-        return $this->redirectToRoute('mon-compte');
+        return $this->redirectToRoute('details-serie', ['id' => $serie->getId()]);
     }
 }
