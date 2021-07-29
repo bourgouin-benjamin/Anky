@@ -1,17 +1,23 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Je bloque la série {{serie.nom}} || Anky{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('/css/details.css')}}">
+{% endblock %}
+
 {% block body %}
 
 <section class="absolute details">
 
     <header>
-        <a href={{path('mon-compte')}} alt="">
+        <a href={{path('mon-compte')}} alt="Retourner à mon dashboard | Anky">
             <i class="fas fa-chevron-left"></i>
         </a>
 
-        <img src="/img/logo-small.svg" title="">
+        <img src="/img/logo-small.svg" title="Logo de Anky | Version medium">
 
-        <a href={{path('social-media')}} alt="">
+        <a href={{ path('social-media')}} alt="Voir mes notifications">
             <i class="far fa-bell"></i>
         </a>
     </header>
@@ -21,7 +27,7 @@
         <h1>Bloquer la série <strong>{{serie.nom}}</strong></h1>
 
         <article>
-            <img src="{{ asset('/uploads/' ~ serie.image) }}" alt="">
+            <img src="{{ asset('/uploads/' ~ serie.image) }}" alt="Image provenant de la série {{ s.nom }}">
             <div class="overlay">
                 <p>{{serie.nom}}</p>
                 <p>{{ random(50, 1000)}} spoils détectés</p>
@@ -32,7 +38,7 @@
         </article>
 
         {% if serie.nom in user.seriesBloque %}
-        <a href={{ path('debloquer', {'id':serie.id}) }} title=""
+        <a href={{ path('debloquer', {'id':serie.id}) }} title="Je débloque la série {{s.nom}}"
         class="debloquer">
             <p>Série bloquée</p>
             <div class="shape">
@@ -41,7 +47,7 @@
         </a>
         <div class="clear"></div>
         {% else %}
-        <a href={{ path('bloquer', {'id':serie.id}) }} title=""
+        <a href={{ path('bloquer', {'id':serie.id}) }} title="Je bloque la série {{s.nom}}"
         class="bloquer">
             <p>Bloquer la série</p>
             <div class="shape">
