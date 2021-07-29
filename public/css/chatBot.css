@@ -1,0 +1,72 @@
+.chatbot main{
+    position:absolute;
+    top:325px;
+    left:0;
+    width:100%;
+    height:auto;
+    padding:50px 75px 250px;
+    box-sizing:border-box;
+}
+
+.chatbot h1{
+    font-family:var(--secondary);
+    color:var(--white);
+    font-size:var(--s);
+    font-weight:300;
+    text-align:center;
+    margin:0 0 100px 0;
+    padding:0 75px;
+    box-sizing:border-box;
+}
+
+.chatbot h2{
+    font-family:var(--main);
+    color:var(--white);
+    font-size:var(--m);
+    text-align:center;
+    width:100%;
+    margin:0 0 50px 0;
+}
+
+.chatbot article{
+    width:100%;
+    height:auto;
+    border:solid 4px var(--greyBorder);
+    border-radius:30px;
+    padding:120px 60px;
+    box-sizing:border-box;
+    margin:0 0 100px 0;
+}
+
+.chatbot article p{
+    font-family:var(--secondary);
+    font-size:var(--s);
+    color:var(--white);
+    text-align:center;
+}
+
+.chatbot main nav{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.chatbot main nav a{
+    font-family:var(--main);
+    font-size:var(--s);
+    color:var(--white);
+    padding:45px 0;
+    box-sizing:border-box;
+    width:100%;
+    text-align:center;
+    border-radius:200px;
+    margin:0 0 60px 0;
+    /* border:4px solid var(--greyBorder); */
+    background: 
+    linear-gradient(var(--greyBloc), var(--greyBloc)) padding-box,
+    linear-gradient(to bottom right, var(--pink), var(--blue)) border-box;
+    border:solid 4px transparent;
+}

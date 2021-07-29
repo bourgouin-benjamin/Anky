@@ -16,10 +16,32 @@ header img{
     width:100px;
 }
 
+header img.lock{
+    width:200px;
+    animation-name:floating;
+    animation-duration:3s;
+    animation-delay: none;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes floating{
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-30px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
 header a:first-child{
     width:75px;
 }
-
 
 header a:first-child i{
     color:var(--white);
