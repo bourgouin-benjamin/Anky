@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Mon dashboard || Anky{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('/css/loader.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/dashboard.css')}}">
+{% endblock %}
+
 {% block body %}
 
     <section class="absolute dashboard">
 
     <div class="loader">
-        <img src="/img/loader.gif" title="">
+        <img src="/img/loader.gif" title="Animation de chargement | Anky">
     </div>
 
         <header>
-            <a href="#" alt="">
+            <a href="#" alt="Retourner à mon dashboard | Anky">
                 <i class="fas fa-chevron-left"></i>
             </a>
 
-            <img src="/img/logo-small.svg" title="">
+            <img src="/img/logo-small.svg" title="Logo de Anky | Version medium">
 
-            <a href={{ path('social-media')}} alt="">
+            <a href={{ path('social-media')}} alt="Voir mes notifications">
                 <i class="far fa-bell"></i>
             </a>
         </header>
@@ -41,12 +48,12 @@
                         {% else %}
                         <article class="single">
                         {% endif %}
-                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="Image provenant de la série {{ s.nom }}">
                             <div class="overlay">
                                 <p>{{s.nom}}</p>
                                 <p>{{ random(50, 1000)}} spoils détectés</p>
                                 <div class="btn-bloquer">
-                                    <a href={{ path('details-serie', {'id': s.id}) }} title="" class="blocked">Débloquer</a>
+                                    <a href={{ path('details-serie', {'id': s.id}) }} title="J'accède à la page pour débloquer la série {{ s.nom }}" class="blocked">Débloquer</a>
                                 </div>
                             </div>
                             <div class="epingle"> 
@@ -74,12 +81,12 @@
                         {% if c == "Les plus spoilées" %}
 
                         <article>
-                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="Image provenant de la série {{ s.nom }}">
                             <div class="overlay">
                                 <p>{{s.nom}}</p>
                                 <p>{{ random(1050, 1500)}} spoils détectés</p>
                                 <div class="btn-bloquer">
-                                    <a href={{ path('details-serie', {'id': s.id}) }} title="">Bloquer</a>
+                                    <a href={{ path('details-serie', {'id': s.id}) }} title="J'accède à la page pour bloquer la série {{ s.nom }}">Bloquer</a>
                                 </div>
                             </div>
                             <div class="epingle"> 
@@ -105,12 +112,12 @@
                         {% if c == "Pour moi" %}
 
                         <article>
-                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="Image provenant de la série {{ s.nom }}">
                             <div class="overlay">
                                 <p>{{s.nom}}</p>
                                 <p>{{ random(50, 1000)}} spoils détectés</p>
                                 <div class="btn-bloquer">
-                                    <a href={{ path('details-serie', {'id': s.id}) }} title="">Bloquer</a>
+                                    <a href={{ path('details-serie', {'id': s.id}) }} title="J'accède à la page pour bloquer la série {{ s.nom }}">Bloquer</a>
                                 </div>
                             </div>
                             <div class="epingle">
@@ -136,12 +143,12 @@
                         {% if c == "Nouveautés" %}
 
                         <article>
-                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="Image provenant de la série {{ s.nom }}">
                             <div class="overlay">
                                 <p>{{s.nom}}</p>
                                 <p>{{ random(50, 1000)}} spoils détectés</p>
                                 <div class="btn-bloquer">
-                                    <a href={{ path('details-serie', {'id': s.id}) }} title="">Bloquer</a>
+                                    <a href={{ path('details-serie', {'id': s.id}) }} title="J'accède à la page pour bloquer la série {{ s.nom }}">Bloquer</a>
                                 </div>
                             </div>
                             <div class="epingle">
@@ -167,12 +174,12 @@
                         {% if c == "Actualité" %}
 
                         <article>
-                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="Image provenant de la série {{ s.nom }}">
                             <div class="overlay">
                                 <p>{{s.nom}}</p>
                                 <p>{{ random(50, 1000)}} spoils détectés</p>
                                 <div class="btn-bloquer">
-                                    <a href={{ path('details-serie', {'id': s.id}) }} title="">Bloquer</a>
+                                    <a href={{ path('details-serie', {'id': s.id}) }} title="J'accède à la page pour bloquer la série {{ s.nom }}">Bloquer</a>
                                 </div>
                             </div>
                             <div class="epingle">
@@ -199,12 +206,12 @@
                             {% if genre_u == genre_s %}
 
                             <article>
-                                <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                                <img src="{{ asset('/uploads/' ~ s.image) }}" alt="Image provenant de la série {{ s.nom }}">
                                 <div class="overlay">
                                     <p>{{s.nom}}</p>
                                     <p>{{ random(50, 1000)}} spoils détectés</p>
                                     <div class="btn-bloquer">
-                                        <a href={{ path('details-serie', {'id': s.id}) }} title="">Bloquer</a>
+                                        <a href={{ path('details-serie', {'id': s.id}) }} title="J'accède à la page pour bloquer la série {{ s.nom }}">Bloquer</a>
                                     </div>
                                 </div>
                                 <div class="epingle"> 
@@ -221,29 +228,29 @@
 
             {% endfor %}
 
-            <a href={{ path('app_logout') }} title=""><i class="fas fa-power-off"></i> Déconnexion</a>
+            <a href={{ path('app_logout') }} title="Je me déconnecte"><i class="fas fa-power-off"></i> Déconnexion</a>
         </main>
 
         <footer class="menu">
             <nav>
                 <ul>
                     <li>
-                        <a href="#" class="highlight"><img src="/img/burger.png" alt=""></i></a>
+                        <a href="#" class="highlight" title="J'accède au menu"><img src="/img/burger.png" alt="Pictogramme d'un menu burger"></i></a>
                     </li>
                     <li>
-                        <a href="#" class="highlight"><img src="/img/loupe.png" alt=""></i></a>
+                        <a href="#" class="highlight" title="Je recherche un mot, une série, ou ce que je veux"><img src="/img/loupe.png" alt="Pictogramme d'une loupe"></i></a>
                     </li>
                     <li>
-                        <a href={{path('lock', {'id':'1'})}}>
-                            <img src="/img/hexagon.svg" alt="">
-                            <img src="/img/ankylochoups.svg" alt="">
+                        <a href={{path('lock', {'id':'1'})}} title="Besoin d'aide ? Lock, le Chat Bot d'Anky, est là pour vous aider !">
+                            <img src="/img/hexagon.svg" alt="Hexagone">
+                            <img src="/img/ankylochoups.svg" alt="Lock, Chat Bot d'Anky">
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="highlight"><img src="/img/bookmark.png" alt=""></a>
+                        <a href="#" class="highlight" title="Je jette un œil à toutes mes séries épinglées"><img src="/img/bookmark.png" alt="Pictogramme d'un marque page"></a>
                     </li>
                     <li>
-                        <a href="#" class="actif highlight"><img src="/img/canva.png" alt=""></a>
+                        <a href="#" class="actif highlight" title="J'accède à mon dashboard"><img src="/img/canva.png" alt="Pictogramme représentant 4 carrés, utilisé pour symboliser le dashboard"></a>
                     </li>
                 </ul>
             </nav>
@@ -251,120 +258,5 @@
     </section>
 
     <script src="/script/epingle.js"></script>
-
-    {# {% for type, messages in app.flashes %}
-        {% for un_message in messages %}
-            <p class="alert alert-{{type}}">{{ un_message }}</p>
-        {% endfor %}
-    {% endfor %}
-
-    {{ dump(user) }} #}
-
-    {# <p>{{user.email}}</p>
-    <p>{{user.pseudo}}</p>
-
-    <h2>Vos genres favoris :</h2>
-    <ul>
-        {% for g in user.genre %}
-            <li>{{g}}</li>
-        {% endfor %}
-    </ul>
-
-    {% if user.keywordsBloque != null %}
-        <h2>Vos mots bloqués</h2>
-        <ul>
-            {% for kw in user.keywordsBloque %}
-                <li>{{kw}}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if user.seriesBloque != null %}
-        <h2>Vos séries bloqués</h2>
-        <ul>
-            {% for sb in user.seriesBloque%}
-                <li>{{sb}}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    <br>
-    <hr>
-    <h2>Vos suggestions</h2>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Genre</th>
-                <th>Keywords</th>
-                <th>No spoil</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for s in serie %}
-
-                {% for gSerie in s.genre %}
-                    {% for gUser in user.genre %}
-                        {% if gSerie == gUser %}
-                            <tr>
-                                <td>{{s.nom}}</td>
-                                <td>
-                                    {% for g in s.genre %}
-                                        {{g}}
-                                    {% endfor %}
-                                </td>
-                                <td>
-                                    {% for kw in s.keywords %}
-                                        {{kw}}
-                                    {% endfor %}
-                                    {# {{ dump(s.keywords) }} #}
-                                {# </td>
-
-                                <td>
-                                    {% if s.nom in user.seriesBloque %}
-                                        <a href={{path('debloquer', {'id':s.id})}} 
-                                        class="btn btn-danger">Débloquer la série</a>
-                                    {% else %}
-                                        <a href={{path('bloquer', {'id':s.id})}} 
-                                        class="btn btn-success">Bloquer la série</a>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
-
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <h2>Publications</h2>
-    {% for p in publi %} #}
-    {# {{dump(p.post)}}
-    {{dump(p.hashtag)}} #}
-        {# {% set errors = 0 %}
-        {% for kw in user.keywordsBloque %} #}
-        {# {{dump(kw)}} #}
-            {# {% if kw|lower in p.post|lower or kw|lower in p.hashtag %}
-                {% set errors = errors + 1 %}
-            {% endif %}
-        {% endfor %}
-
-        {% if errors > 0 %}
-            <div class="blocked">
-                <p>Série bloquée par Anky</p>
-            </div>
-        {% else %}
-            <div>
-                <p><b>{{p.username}}</b></p>
-                <p><em>
-                    #{{ p.hashtag|join(', #') }} 
-                </em></p>
-                <p>{{p.post}}</p>
-            </div>
-        {% endif %}
-            
-    {% endfor %}  #}
 
 {% endblock %}
