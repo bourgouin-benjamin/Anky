@@ -164,7 +164,7 @@
     margin:0 0 100px 0;
 }
 
-.details .synopsis p:first-child{
+.details .synopsis > p:first-child{
     color:var(--greyBorder);
     font-family:var(--main);
     font-size:130px;
@@ -177,12 +177,29 @@
     z-index:-1;
 }
 
-.details .synopsis p:last-child{
+.details .synopsis > p:nth-child(2){
     font-family:var(--secondary);
     font-size:var(--s);
     color:var(--white);
     line-height:1.5em;
     font-style:italic;
+    margin:0 0 50px 0;
+}
+
+.details .synopsis .genre{
+    width:100%;
+    height:auto;
+}
+
+.details .synopsis .genre p{
+    font-family:var(--secondary);
+    font-size:var(--xs);
+    color:var(--white);
+    text-transform:uppercase;
+    font-weight:bolder;
+    display:inline-block;
+    margin:0 25px 0 0;
+    opacity:0.6;
 }
 
 .details .keywords h2{

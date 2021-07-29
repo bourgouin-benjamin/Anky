@@ -21,37 +21,61 @@
 
             {% for p in publi %}
 
+            {% set errors = 0 %}
+            {% set thisSerie = '' %}
+            {% for kw in user.keywordsBloque %} 
+                {% if kw|lower in p.post|lower or kw|lower in p.hashtag %}
+                    {% set errors = errors + 1 %}
+                    {% for s in serie %}
+                        {% for k in s.keywords %}
+                            {% if kw == k %}
+                                {% set thisSerie = s.nom %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+
+            {% if errors > 0 %}
+            <section class="publication blocked">
+                <div class="filtre">
+                    <p>ANKY a masque ce contenu pour ne pas te spoiler <span>{{thisSerie}}</span></p>
+                    <p><span>Appuis pour l'afficher à tes risques et périls 😱</span></p>
+                    <img src="/img/logo-small.svg" title="">
+                </div>
+            {% else %}
             <section class="publication">
-                <head>
+            {% endif %}
+                <article class="publi-header">
                     <div class="pp">
                         <i class="fas fa-user-shield"></i>
                     </div>
-                    <article>
+                    <div>
                         <p>{{p.username}}</p>
-                        <p>#{{ p.hashtag|join(' #') }}</p>
-                    </article>
-                </head>
+                    </div>
+                </article>
 
-                <main>
+                <article class="publi-main">
+                    <p>#{{ p.hashtag|join(' #') }}</p>
                     <p>{{p.post}}</p>
-                </main>
+                </article>
                 
-                <footer>
-                    <article>
+                <article class="publi-footer">
+                    <div>
                         <i class="far fa-heart"></i>
                         <p>{{random(1, 200)}},{{random(1,9)}} k</p>
-                    </article>
+                    </div>
 
-                    <article>
+                    <div>
                         <i class="far fa-comment-dots"></i>
                         <p>{{random(1, 200)}},{{random(1,9)}} k</p>
-                    </article>
+                    </div>
 
-                    <article>
-                        <i class="fas fa-share-square"></i>
+                    <div>
+                        <i class="far fa-share-square"></i>
                         <p>{{random(1, 200)}},{{random(1,9)}} k</p>
-                    </article>
-                </footer>
+                    </div>
+                </article>
             </section>
 
             {% endfor %}
@@ -84,7 +108,8 @@
         </footer>
     </section>
 
-    <script src="/script/epingle.js"></script>
+    <script src="/script/overlay.js"></script>
+    <script src="/script/likeShareComment.js"></script>
 
     {# {% for type, messages in app.flashes %}
         {% for un_message in messages %}

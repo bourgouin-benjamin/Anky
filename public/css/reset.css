@@ -44,3 +44,7 @@ body::before{
 .clear{
     clear:both;
 }
+
+.admin{
+    background:white;
+}

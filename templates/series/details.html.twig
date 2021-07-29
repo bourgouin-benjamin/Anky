@@ -11,7 +11,7 @@
 
         <img src="/img/logo-small.svg" title="">
 
-        <a href="#" alt="">
+        <a href={{path('social-media')}} alt="">
             <i class="far fa-bell"></i>
         </a>
     </header>
@@ -53,6 +53,12 @@
         <article class="synopsis">
             <p>Synopsis</p>
             <p>{{ serie.resume }}</p>
+
+            <div class="genre">
+                {% for genre in serie.genre %}
+                <p>{{genre}}</p>
+                {% endfor %}
+            </div>
         </article>
 
         <article class="keywords">
@@ -66,7 +72,7 @@
 
     </main>
 
-    <footer>
+    <footer class="menu">
         <nav>
             <ul>
                 <li>

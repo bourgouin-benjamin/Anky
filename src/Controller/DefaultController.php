@@ -60,10 +60,12 @@ class DefaultController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
+        $serie = $em->getRepository(Series::class)->findAll();
         $publi = $em->getRepository(Publications::class)->findAll();
 
         return $this->render('/publication/socialMedia.html.twig', [
             'user' => $user,
+            'serie' => $serie,
             'publi' => $publi
         ]);
     }

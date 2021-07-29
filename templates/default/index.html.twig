@@ -23,6 +23,47 @@
         <main>
             <h1>Mon dashboard <strong>Anky</strong></h1>
 
+            {% if user.seriesBloque != null or user.seriesBloque != [] %}
+
+            <section class="container">
+                <h2>Mes séries bloquées</h2>
+
+                <div class="nowrap">
+                {% set counter = 0 %}
+                {% for s in serie %}
+                    {% for s_blocked in user.seriesBloque %}
+
+                        {% if s.nom == s_blocked %}
+                        {% set counter = counter + 1 %}
+                        
+                        {% if counter > 1 %}
+                        <article>
+                        {% else %}
+                        <article class="single">
+                        {% endif %}
+                            <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                            <div class="overlay">
+                                <p>{{s.nom}}</p>
+                                <p>{{ random(50, 1000)}} spoils détectés</p>
+                                <div class="btn-bloquer">
+                                    <a href={{ path('details-serie', {'id': s.id}) }} title="" class="blocked">Débloquer</a>
+                                </div>
+                            </div>
+                            <div class="epingle"> 
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                        </article>
+
+                        {% endif %}
+
+                    {% endfor %}
+                {% endfor %}
+                </div>
+
+            </section>
+
+            {% endif %}
+
             <section class="container">
                 <h2>Les plus spoilées<br>de la semaine</h2>
 
@@ -183,7 +224,7 @@
             <a href={{ path('app_logout') }} title=""><i class="fas fa-power-off"></i> Déconnexion</a>
         </main>
 
-        <footer>
+        <footer class="menu">
             <nav>
                 <ul>
                     <li>
