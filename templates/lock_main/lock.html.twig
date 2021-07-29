@@ -1,17 +1,23 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Lock, le Chat Bot d'Anky || Anky{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('/css/chatBot.css')}}">
+{% endblock %}
+
 {% block body %}
 
     <section class="absolute chatbot">    
 
     <header>
-        <a href={{path('mon-compte')}} alt="">
+        <a href={{path('mon-compte')}} alt="Retourner à mon dashboard | Anky">
             <i class="fas fa-chevron-left"></i>
         </a>
 
-        <img src="/img/hexagonAnky.svg" title="" class="lock">
+        <img src="/img/hexagonAnky.svg" title="Lock, le Chat Bot d'Anky" class="lock">
 
-        <a href={{path('social-media')}} alt="">
+        <a href={{ path('social-media')}} alt="Voir mes notifications">
             <i class="far fa-bell"></i>
         </a>
     </header>
@@ -32,7 +38,7 @@
             <nav>
             {% for lq in lockQuestion %}
                 {% if lq.MainId.id == etape %}
-                    <a href={{ lq.link }}>{{ lq.question }}</a>
+                    <a href={{ lq.link }} title="{{lq.question}} | Lock, le Chat Bot d'Anky">{{ lq.question }}</a>
                 {% endif %}
             {% endfor %}
             </nav>
