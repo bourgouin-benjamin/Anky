@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="absolute social">
+
+        <header>
+            <a href={{path('mon-compte')}} alt="">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+
+            <img src="/img/logo-small.svg" title="">
+
+            <a href={{ path('social-media')}} alt="">
+                <i class="far fa-bell"></i>
+            </a>
+        </header>
+
+        <main>
+            <h1>Mon fil d'actualité</h1>
+
+            {% for p in publi %}
+
+            <section class="publication">
+                <head>
+                    <div class="pp">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <article>
+                        <p>{{p.username}}</p>
+                        <p>#{{ p.hashtag|join(' #') }}</p>
+                    </article>
+                </head>
+
+                <main>
+                    <p>{{p.post}}</p>
+                </main>
+                
+                <footer>
+                    <article>
+                        <i class="far fa-heart"></i>
+                        <p>{{random(1, 200)}},{{random(1,9)}} k</p>
+                    </article>
+
+                    <article>
+                        <i class="far fa-comment-dots"></i>
+                        <p>{{random(1, 200)}},{{random(1,9)}} k</p>
+                    </article>
+
+                    <article>
+                        <i class="fas fa-share-square"></i>
+                        <p>{{random(1, 200)}},{{random(1,9)}} k</p>
+                    </article>
+                </footer>
+            </section>
+
+            {% endfor %}
+
+        </main>
+
+        <footer class="menu">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="highlight"><img src="/img/burger.png" alt=""></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="highlight"><img src="/img/loupe.png" alt=""></i></a>
+                    </li>
+                    <li>
+                        <a href={{path('lock', {'id':'1'})}}>
+                            <img src="/img/hexagon.svg" alt="">
+                            <img src="/img/ankylochoups.svg" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="highlight"><img src="/img/bookmark.png" alt=""></a>
+                    </li>
+                    <li>
+                        <a href={{path('mon-compte')}} class="highlight"><img src="/img/canva.png" alt=""></a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </section>
+
+    <script src="/script/epingle.js"></script>
+
+    {# {% for type, messages in app.flashes %}
+        {% for un_message in messages %}
+            <p class="alert alert-{{type}}">{{ un_message }}</p>
+        {% endfor %}
+    {% endfor %}
+
+    {{ dump(user) }} #}
+
+    {# <p>{{user.email}}</p>
+    <p>{{user.pseudo}}</p>
+
+    <h2>Vos genres favoris :</h2>
+    <ul>
+        {% for g in user.genre %}
+            <li>{{g}}</li>
+        {% endfor %}
+    </ul>
+
+    {% if user.keywordsBloque != null %}
+        <h2>Vos mots bloqués</h2>
+        <ul>
+            {% for kw in user.keywordsBloque %}
+                <li>{{kw}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if user.seriesBloque != null %}
+        <h2>Vos séries bloqués</h2>
+        <ul>
+            {% for sb in user.seriesBloque%}
+                <li>{{sb}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    <hr>
+    <h2>Vos suggestions</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Genre</th>
+                <th>Keywords</th>
+                <th>No spoil</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in serie %}
+
+                {% for gSerie in s.genre %}
+                    {% for gUser in user.genre %}
+                        {% if gSerie == gUser %}
+                            <tr>
+                                <td>{{s.nom}}</td>
+                                <td>
+                                    {% for g in s.genre %}
+                                        {{g}}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for kw in s.keywords %}
+                                        {{kw}}
+                                    {% endfor %}
+                                    {# {{ dump(s.keywords) }} #}
+                                {# </td>
+
+                                <td>
+                                    {% if s.nom in user.seriesBloque %}
+                                        <a href={{path('debloquer', {'id':s.id})}} 
+                                        class="btn btn-danger">Débloquer la série</a>
+                                    {% else %}
+                                        <a href={{path('bloquer', {'id':s.id})}} 
+                                        class="btn btn-success">Bloquer la série</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Publications</h2>
+    {% for p in publi %} #}
+    {# {{dump(p.post)}}
+    {{dump(p.hashtag)}} #}
+        {# {% set errors = 0 %}
+        {% for kw in user.keywordsBloque %} #}
+        {# {{dump(kw)}} #}
+            {# {% if kw|lower in p.post|lower or kw|lower in p.hashtag %}
+                {% set errors = errors + 1 %}
+            {% endif %}
+        {% endfor %}
+
+        {% if errors > 0 %}
+            <div class="blocked">
+                <p>Série bloquée par Anky</p>
+            </div>
+        {% else %}
+            <div>
+                <p><b>{{p.username}}</b></p>
+                <p><em>
+                    #{{ p.hashtag|join(', #') }} 
+                </em></p>
+                <p>{{p.post}}</p>
+            </div>
+        {% endif %}
+            
+    {% endfor %}  #}
+
+{% endblock %}
