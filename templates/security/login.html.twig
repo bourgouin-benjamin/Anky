@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Je mme connecte || Anky{% endblock %}
+{% block title %}Je me connecte || Anky{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{asset('/css/register.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/login.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -11,26 +11,17 @@
 {% block body %}
 <section class="absolute login">
 
-<a href="{{path('welcome')}}" alt="">
+<a href="{{path('welcome')}}" alt="Retourner à la page d'accueil de Anky">
     <i class="fas fa-chevron-left"></i>
 </a>
 
 <article>
-        <img src="/img/logo-small.svg" title="">
+        <img src="/img/logo-small.svg" title="Logo de Anky | Version medium">
         <h1>J'accède à<br>
         mon p'tit compte</h1>
 </article>
 
 <form method="post" class="form">
-    {# {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %} #}
-
-    {# {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %} #}
 
     <div>
         <label for="inputEmail">E-mail</label>
@@ -46,23 +37,13 @@
            value="{{ csrf_token('authenticate') }}"
     >
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
     <button type="submit">
-        Let's gooooo
+        Let's go
     </button>
 
 </form>
 </section>
 
 <script src="/script/floatingLabel.js"></script>
+
 {% endblock %}
