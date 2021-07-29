@@ -24,22 +24,24 @@
             {% set errors = 0 %}
             {% set thisSerie = '' %}
             {% for kw in user.keywordsBloque %} 
-                {% if kw|lower in p.post|lower or kw|lower in p.hashtag %}
-                    {% set errors = errors + 1 %}
-                    {% for s in serie %}
-                        {% for k in s.keywords %}
-                            {% if kw == k %}
-                                {% set thisSerie = s.nom %}
-                            {% endif %}
+                {% for hashtag in p.hashtag %}
+                    {% if kw|lower in p.post|lower or kw|lower == hashtag|lower %}
+                        {% set errors = errors + 1 %}
+                        {% for s in serie %}
+                            {% for k in s.keywords %}
+                                {% if kw == k %}
+                                    {% set thisSerie = s.nom %}
+                                {% endif %}
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
-                {% endif %}
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
 
             {% if errors > 0 %}
             <section class="publication blocked">
                 <div class="filtre">
-                    <p>ANKY a masque ce contenu pour ne pas te spoiler <span>{{thisSerie}}</span></p>
+                    <p>ANKY a masqué ce contenu pour ne pas te spoiler <span>{{thisSerie}}</span></p>
                     <p><span>Appuis pour l'afficher à tes risques et périls 😱</span></p>
                     <img src="/img/logo-small.svg" title="">
                 </div>
