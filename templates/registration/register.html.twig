@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Je m'inscris || Anky{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('/css/register.css')}}">
+{% endblock %}
 
 {% block body %}
 
 <section class="absolute register">
 
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-
-    <a href="{{path('welcome')}}" alt="">
+    <a href="{{path('welcome')}}" alt="Retourner à la page d'accueil de Anky">
         <i class="fas fa-chevron-left"></i>
     </a>
 
     <article>
-        <img src="/img/logo-small.svg" title="">
+        <img src="/img/logo-small.svg" title="Logo de Anky | Version medium">
         <h1>Je m'inscris<br>
         gratuitement</h1>
     </article>
@@ -52,7 +52,7 @@
         }) }}
         <div>
             <span class="checkmark">
-            <i class="fas fa-check"></i>
+                <i class="fas fa-check"></i>
             </span>
         </div>
 

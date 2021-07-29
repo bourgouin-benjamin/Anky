@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Anky || Ton anti-spoil qui fait le café{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('/css/welcome.css')}}">
+{% endblock %}
+
 {% block body %}
 
 <section class="absolute welcome">
 
-    <img src="/img/logo.svg" alt="">
+    <img src="/img/logo.svg" alt="Logo de Anky">
 
     <h1>Hello, tu en as marre de te faire spoiler ?<br>
     Voici <strong>Anky</strong> ton nouvel anti-spoiler !</h1>
@@ -12,14 +18,14 @@
     <article>
         <div>
             <p>Nouveau sur notre app ?</p>
-            <a href="{{path('app_register')}}" title="">Je m'inscris</a>
+            <a href="{{path('app_register')}}" title="Je m'inscris sur Anky">Je m'inscris</a>
         </div>
 
         <p>ou</p>
 
         <div>
             <p>Déjà inscrit(e) ?</p>
-            <a href="{{path('app_login')}}" title="">Me connecter</a>
+            <a href="{{path('app_login')}}" title="Je me connecte à mon compte Anky">Me connecter</a>
         </div>
     </article>
 
