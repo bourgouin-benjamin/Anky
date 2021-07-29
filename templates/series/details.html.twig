@@ -27,7 +27,7 @@
         <h1>Bloquer la série <strong>{{serie.nom}}</strong></h1>
 
         <article>
-            <img src="{{ asset('/uploads/' ~ serie.image) }}" alt="Image provenant de la série {{ s.nom }}">
+            <img src="{{ asset('/uploads/' ~ serie.image) }}" alt="Image provenant de la série {{ serie.nom }}">
             <div class="overlay">
                 <p>{{serie.nom}}</p>
                 <p>{{ random(50, 1000)}} spoils détectés</p>
@@ -38,7 +38,7 @@
         </article>
 
         {% if serie.nom in user.seriesBloque %}
-        <a href={{ path('debloquer', {'id':serie.id}) }} title="Je débloque la série {{s.nom}}"
+        <a href={{ path('debloquer', {'id':serie.id}) }} title="Je débloque la série {{serie.nom}}"
         class="debloquer">
             <p>Série bloquée</p>
             <div class="shape">
@@ -47,7 +47,7 @@
         </a>
         <div class="clear"></div>
         {% else %}
-        <a href={{ path('bloquer', {'id':serie.id}) }} title="Je bloque la série {{s.nom}}"
+        <a href={{ path('bloquer', {'id':serie.id}) }} title="Je bloque la série {{serie.nom}}"
         class="bloquer">
             <p>Bloquer la série</p>
             <div class="shape">
