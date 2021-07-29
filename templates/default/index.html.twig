@@ -15,7 +15,7 @@
 
             <img src="/img/logo-small.svg" title="">
 
-            <a href="#" alt="">
+            <a href={{ path('social-media')}} alt="">
                 <i class="far fa-bell"></i>
             </a>
         </header>
@@ -146,6 +146,39 @@
                 </div>
 
             </section>
+
+            {% for genre_u in user.genre %}
+
+            <section class="container">
+                <h2>{{genre_u}}</h2>
+                <div class="nowrap">
+                
+                    {% for s in serie %}
+                        {% for genre_s in s.genre %}
+                            {% if genre_u == genre_s %}
+
+                            <article>
+                                <img src="{{ asset('/uploads/' ~ s.image) }}" alt="">
+                                <div class="overlay">
+                                    <p>{{s.nom}}</p>
+                                    <p>{{ random(50, 1000)}} spoils détectés</p>
+                                    <div class="btn-bloquer">
+                                        <a href={{ path('details-serie', {'id': s.id}) }} title="">Bloquer</a>
+                                    </div>
+                                </div>
+                                <div class="epingle"> 
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                            </article>
+
+                            {% endif %}    
+                        {% endfor %}    
+                    {% endfor %}
+                
+                </div>
+            </section>
+
+            {% endfor %}
 
             <a href={{ path('app_logout') }} title=""><i class="fas fa-power-off"></i> Déconnexion</a>
         </main>

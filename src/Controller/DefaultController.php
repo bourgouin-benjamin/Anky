@@ -45,13 +45,26 @@ class DefaultController extends AbstractController
         
         $user = $this->getUser();
         $serie = $em->getRepository(Series::class)->findAll();
-        $publi = $em->getRepository(Publications::class)->findAll();
 
 
         return $this->render('default/index.html.twig', [
             'user' => $user,
             'serie' => $serie,
-            'publi' => $publi,
+        ]);
+    }
+
+    /**
+     * @Route("/social-media", name="social-media")
+     */
+    public function social(){
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getUser();
+        $publi = $em->getRepository(Publication::class)->findAll();
+
+        return $this->render('pubication/index.html.twig', [
+            'user' => $user,
+            'publi' => $publi
         ]);
     }
 

@@ -153,3 +153,24 @@
     linear-gradient(var(--pink), var(--blue)) border-box,
     linear-gradient(to bottom right, var(--pink), var(--blue)) border-box;
 }
+
+.dashboard main > a{
+    width:60%;
+    display:block;
+    font-family: var(--main);
+    font-size: var(--s);
+    color: var(--white);
+    text-align:center;
+    padding:30px 100px;
+    box-sizing:border-box;
+    border-radius:150px;
+    margin:50px auto;
+    background: 
+    linear-gradient(var(--black), var(--black)) padding-box,
+    linear-gradient(to bottom right, var(--pink), var(--blue)) border-box;
+    border:solid 4px transparent;
+}
+
+.dashboard main > a i{
+    margin:0 20px 0 0;
+}
