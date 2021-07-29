@@ -1,20 +1,26 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Mes notifications || Anky{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('/css/social.css')}}">
+{% endblock %}
+
 {% block body %}
 
     <section class="absolute social">
 
         <header>
-            <a href={{path('mon-compte')}} alt="">
+            <a href={{path('mon-compte')}} alt="Retourner à mon dashboard | Anky">
                 <i class="fas fa-chevron-left"></i>
             </a>
 
-            <img src="/img/logo-small.svg" title="">
+            <img src="/img/logo-small.svg" title="Logo de Anky | Version medium">
 
-            <a href={{ path('social-media')}} alt="">
+            <a href={{ path('social-media')}} alt="Voir mes notifications">
                 <i class="far fa-bell"></i>
             </a>
-        </header>
+        </header>   
 
         <main>
             <h1>Mon fil d'actualité</h1>
@@ -43,7 +49,7 @@
                 <div class="filtre">
                     <p>ANKY a masqué ce contenu pour ne pas te spoiler <span>{{thisSerie}}</span></p>
                     <p><span>Appuis pour l'afficher à tes risques et périls 😱</span></p>
-                    <img src="/img/logo-small.svg" title="">
+                    <img src="/img/logo-small.svg" title="Logo de Anky | Verson medium">
                 </div>
             {% else %}
             <section class="publication">
