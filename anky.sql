@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 28 juil. 2021 à 14:49
+-- Généré le : ven. 30 juil. 2021 à 01:07
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.12
 
@@ -39,9 +39,7 @@ INSERT INTO `categorie` (`id`, `cat`) VALUES
 (1, 'Actualité'),
 (2, 'Les plus spoilées'),
 (3, 'Pour moi'),
-(4, 'Nouveautés'),
-(5, 'Mes favoris'),
-(7, 'Mes séries bloquées');
+(4, 'Nouveautés');
 
 -- --------------------------------------------------------
 
@@ -121,22 +119,22 @@ CREATE TABLE `lock_main` (
 --
 
 INSERT INTO `lock_main` (`id`, `title`, `text`) VALUES
-(1, 'Accueil ChatBot Changé', 'Ceci est le texte d\'intro'),
-(18, 'Présentation & Tutoriel', 'lorem'),
-(19, 'Anky, qu\'est-ce que c\'est ?', 'lorem'),
-(20, 'Tutoriels guidés', 'lorem'),
-(21, 'Tutoriel', 'lorem'),
-(22, 'Mon compte', 'lorem'),
-(23, 'Mes informations', 'lorem'),
-(24, 'Ma formule d\'abonnement', 'lorem'),
-(25, 'Ma liste de mots bloqués', 'lorem'),
-(26, 'Méthodes de blocage', 'lorem'),
-(27, 'Bloquer des mots', 'lorem'),
-(28, 'Ma formule d\'abonnement', 'lorem'),
-(29, 'Paramètres du blocage', 'lorem'),
-(30, 'Besoin d\'aide ?', 'lorem'),
-(31, 'F.A.Q.', 'lorem'),
-(32, 'Contacter le support', 'lorem');
+(1, 'Lock va vous aider', 'Coucou toi !\r\nJe suis Lock, ton ChatBot sur mesure pour t\'aider à te repérer dans notre application, Anky. Comment puis-je t\'aider ?'),
+(18, 'Présentation & Tutoriel', 'Je connais Anky sur le bout des doigts, que veux-tu apprendre à propos de l\'application ?'),
+(19, 'Anky, qu\'est-ce que c\'est ?', 'Anky est une application anti-spoil. En utilisant Anky, tu peux bloquer des mots-clés relatifs aux séries que tu veux afin que des messages contenant ces mots-clés et donc un spoil potentiel soient masqués.'),
+(20, 'Tutoriels guidés', 'Je peux te montrer comment utiliser notre application, je possède de nombreux tutoriels dans ma base de données ! \r\nQue voudrais-tu apprendre ?'),
+(21, 'Tutoriel', 'Je suis désolé, le tutoriel n\'est pas encore disponible. Moi et l\'équipe de Anky travaillons fort pour t\'offrir la meilleur expérience !'),
+(22, 'Mon compte', 'Je peux te diriger vers différentes pages concernant ton compte.\r\nOù veux-tu que je t\'emmène ?'),
+(23, 'Mes informations', 'Normalement, je suis censée te rediriger vers la page de tes informations personnelles. Cette page n\'existe pas encore, elle arrive très bientôt !'),
+(24, 'Ma formule d\'abonnement', 'Normalement, je suis censée te rediriger vers la page de ta formule d\'abonnement. Cette page n\'existe pas encore, elle arrive très bientôt !'),
+(25, 'Ma liste de mots bloqués', 'Normalement, je suis censée te rediriger vers la page de tes mots bloqués. Cette page n\'existe pas encore, elle arrive très bientôt !'),
+(26, 'Méthodes de blocage', 'Je vais te conduire sur les pages concernant le blocage anti-spoil imaginé par Anky.\r\nQue veux-tu faire ?'),
+(27, 'Bloquer des séries', 'Tu aimerais que je t\'emmène sur la page où tu pourras bloquer des séries, ou bien que je te montre comment t\'y prendre ?'),
+(28, 'Ma formule d\'abonnement', 'Normalement, je suis censée te rediriger vers la page de ta formule d\'abonnement. Cette page n\'existe pas encore, elle arrive très bientôt !'),
+(29, 'Paramètres du blocage', 'Normalement, je suis censée te rediriger vers la page des paramètres du blocage. Cette page n\'existe pas encore, elle arrive très bientôt !'),
+(30, 'Besoin d\'aide ?', 'Moi, Lock, promet de t\'apporter les meilleures informations dont tu as besoin ! \r\nDonne moi juste une dernière précision sur ta demande s\'il te plaît.'),
+(31, 'F.A.Q.', 'Voici les questions qui nous sont le plus fréquemment posées, mais tu peux aussi te rendre sur notre page F.A.Q. pour accéder à tout ce qui pourrait être sujet à un questionnement de ta part.'),
+(32, 'Contacter le support', 'Plusieurs moyens sont à ta disposition, en voici une liste : \r\n\r\nPar mail \r\nsupport@anky.fr \r\n\r\nPar téléphone (de 10h à 17h30 du lundi au vendredi)\r\n01 23 45 67 89 \r\n\r\nTu peux également nous envoyer un message grâce au formulaire que tu trouveras en cliquant sur le liens suivant.');
 
 -- --------------------------------------------------------
 
@@ -168,19 +166,26 @@ INSERT INTO `lock_question` (`id`, `main_id_id`, `question`, `link`) VALUES
 (27, 22, 'Mes informations', '/lock/23'),
 (28, 22, 'Ma formule d\'abonnement', '/lock/24'),
 (29, 22, 'Ma liste de mots bloqués', '/lock/25'),
-(30, 26, 'Bloquer des mots', '/lock/27'),
+(30, 26, 'Bloquer des séries', '/lock/27'),
 (31, 26, 'Voir ma formule d\'abonnement', '/lock/28'),
 (32, 26, 'Paramètres du blocage', '/lock/29'),
-(33, 27, 'Aller sur la page pour bloquer des mots', '/'),
+(33, 27, 'Je veux bloquer des séries', '/anky'),
 (34, 27, 'Tutoriel : Bloquer des mots', '/lock/21'),
 (35, 30, 'Tutoriels guidés', '/lock/20'),
 (36, 30, 'F.A.Q.', '/lock/31'),
 (37, 30, 'Contacter le support', '/lock/32'),
-(38, 31, 'Question fréquente #1', '/'),
-(39, 31, 'Question fréquente #2', '/'),
-(40, 31, 'Question fréquente #3', '/'),
-(41, 31, 'Page F.A.Q.', '/'),
-(42, 32, 'Formulaire de contact', '/');
+(38, 31, 'Question fréquente #1', '/lock/1'),
+(39, 31, 'Question fréquente #2', '/lock/1'),
+(40, 31, 'Question fréquente #3', '/lock/1'),
+(41, 31, 'Page F.A.Q.', '/lock/1'),
+(42, 32, 'Formulaire de contact', '/lock/1'),
+(43, 19, 'Merci Lock !', '/lock/1'),
+(44, 21, 'Merci Lock !', '/lock/1'),
+(46, 23, 'Merci Lock !', '/lock/1'),
+(47, 24, 'Merci Lock !', '/lock/1'),
+(48, 25, 'Merci Lock !', '/lock/1'),
+(49, 28, 'Merci Lock !', '/lock/1'),
+(50, 29, 'Merci Lock !', '/lock/1');
 
 -- --------------------------------------------------------
 
@@ -200,8 +205,34 @@ CREATE TABLE `publications` (
 --
 
 INSERT INTO `publications` (`id`, `username`, `hashtag`, `post`) VALUES
-(5, 'user001', '[\"rick\",\" morty\"]', 'Ceci est un post sur Wanda Vision'),
-(6, 'user002', '[\"strangerthings\"]', 'Salut salut');
+(5, 'Paquito del Pepitas', '[\"rick\",\"morty\",\"s4e3\",\"beth\"]', 'Ceci est une magnifique publication qui spoil de ouf un plot twist énorme dans l\'avant-dernière saison de Rick et Morty, et oui je gagne des lignes en racontant ma vie, quelle dinguerie !'),
+(6, 'GrandM', '[\"StrangerThings\",\"scifi\"]', 'La meuf avec ses pouvoir la, trop cheatée'),
+(7, 'pepito', '[\"pepito\",\"pascal\"]', 'Ohlala ya Berlin qui meurt ohmagad'),
+(8, 'Risitas', '[\"breakingbad\",\"walterwhite\"]', 'Walter White quand il tue Barry sans même lui lancé un regard... J\'en ai des frissons !'),
+(9, 'Lia', '[\"StrangerThings\",\"Fiction\"]', 'Wah so strange'),
+(10, 'Daniel de Papel', '[\"Casa\",\"Papel\",\"Berlin\"]', 'Un giga spoil de la casa de papel damn'),
+(11, 'Firmad', '[\"CasadePapel\",\"mort\"]', 'oh oh, je \'y attendais pas'),
+(12, 'Saes', '[\"Rick\",\"Morty\",\"Science\"]', 'Saison 5 en approche !'),
+(13, 'El-Coquino', '[\"RicketMorty\",\"AdultSwim\"]', 'L\'épisode 3 de la saison 5 de Rick et Morty...'),
+(14, 'iWantIt', '[\"WalkingDead\",\"Zombie\"]', 'Survivre s’annonce plus difficile que prévu dans la saison 11 de The Walking Dead'),
+(15, 'King Teums', '[\"BreakingBad\"]', 'Dans un monde où breaking bad n\'existe pas'),
+(16, 'FDE Trevor', '[\"BreakingBad\",\"drogue\"]', 'Y a des humains qui sont persuadés que Prison Break est la meilleure série au monde alors que Breaking Bad et Murder existent'),
+(17, 'Falémayé', '[\"Strange\",\"SciFi\"]', 'C\'était quoi ce dernier épisode !!!'),
+(18, 'DarkLover69', '[\"Dark\",\"suspence\"]', 'J\'y comprend rien du tout'),
+(19, 'Milice', '[\"Dark\",\"peur\",\"scary\"]', 'Dark meilleure série Netflix'),
+(20, 'S H I R O', '[\"Loki\",\"MCU\"]', 'Le dernier épisode de Loki est une des meilleures choses qui soit arrivée dans le MCU'),
+(21, 'ppau', '[\"Loki\",\"MCU\",\"Disney\"]', 'Go se retaper toute la saison ce soir !'),
+(22, 'Thomas news', '[\"BrooklynNineNine\",\"Brooklyn\",\"serie\"]', 'Nous le 13 août devant la dernière saison de Brooklyn nine nine'),
+(23, 'Ash', '[\"BrooklinNineNine\",\"Generique\"]', 'à partir de l\'épisode 5 de la saison 6 de Brooklyn Nine-Nine, le générique change, et Gina est remplacée par Hitchcock et Scully, et elle n\'est plus sur l\'image de groupe non plus'),
+(24, 'Infos séries', '[\"SweetTooth\",\"New\",\"s2\"]', 'Netflix renouvelle officiellement Sweet Tooth pour une saison 2.'),
+(25, 'BloodRat', '[\"SweetTooth\",\"Netflix\"]', 'Ok, alors, là nouvelle série netflix « Sweet Tooth » elle est INCROYABLE'),
+(26, 'xX_Leorio1234_Xx', '[\"MesPremieresFoi\",\"Netflix\"]', 'jajzjzjz dans mes première fois ils parlent de zayn et gigi, harry, twilight et bts pq j’ai pas regardé plus tôt'),
+(27, 'Océane', '[\"LoveVictor\",\"Victor\",\"serie\"]', 'Non mais entre Young Royals et la saison 2 de Love Victor j’ai compris que j’allais souffrir'),
+(28, 'Jojo-DisneyDream', '[\"LoveVictor\",\"Netflix\",\"s2\"]', 'Cette saison 2 de Love Victor est juste exceptionnelle !'),
+(29, 'Star wars holo side', '[\"TheMandalorian\",\"StarWars\"]', 'Le talentueux artiste deepfake Shamook a été embauché en tant qu\'artiste principal de capture faciale chez Lucasfilm. Le YouTuber a attiré la notoriété en décembre dernier après que sa version améliorée du vieillissement de Mark Hamill. Bonne nouvelle'),
+(30, 'Drole2savoir', '[\"TheMandalorian\",\"Disney\",\"StarWars\"]', 'Durant le tournage de «The Mandalorian», en 2019, ils avaient plus de costumes de Stormtrooper. Ils ont donc contacté des fans de Star Wars, pour jouer dans l\'épisode avec leurs propres costumes fait maison.'),
+(31, 'Aynur', '[\"WandaVision\",\"MCU\"]', 'J\'ai fini Wanda Vision... bof'),
+(32, 'Coléo', '[\"WandaVision\",\"MCU\",\"Spoil\"]', 'Wanda quand elle a commencer à comprendre qu\'elle avait créer sa propre réalité en emprisonnant des milliers de personne pour vivre avec vision');
 
 -- --------------------------------------------------------
 
@@ -224,16 +255,16 @@ CREATE TABLE `series` (
 INSERT INTO `series` (`id`, `nom`, `keywords`, `resume`, `image`) VALUES
 (5, 'Wanda Vision', '[\"Wanda\",\"Maximoff\",\"Vision\",\"MCU\",\"Marvel\",\"Sorci\\u00e8re Rouge\",\"WandaVision\"]', 'Produite par les studios Marvel, “WandaVision” mélange le style des sitcoms classiques avec l\'univers Marvel. Wanda Maximoff (Elizabeth Olsen) et Vision (Paul Bettany), deux super-héros menant une vie des plus normales, commencent à se douter que celle-ci n\'est pas aussi parfaite qu’elle en a l\'air. Une nouvelle série réalisée par Matt Shakman avec Jac Shaeffer comme scénariste principale.', '60f9496b5b9b6.jpg'),
 (16, 'Rick & Morty', '[\"Rick\",\"Morty\",\"AdultSwim\"]', 'Rick, chercheur brillant, mais porté sur la bouteille, emmène son petit-fils timoré Morty dans d\'autres mondes et dimensions où il lui fait vivre de folles escapades.', '60f948c0a97ce.jpg'),
-(19, 'Stranger Things', '[\"Stranger\",\"Things\",\"Stranger Things\",\"Will Byers\",\"Byers\"]', 'Quand un jeune garçon disparaît, une petite ville découvre une affaire mystérieuse, des expériences secrètes, des forces surnaturelles terrifiantes... et une fillette.', '60f9498f03a72.jpg'),
+(19, 'Stranger Things', '[\"Stranger\",\"Things\",\"Stranger Things\",\"strangerthings\",\"Will Byers\",\"Byers\",\"strange\"]', 'Quand un jeune garçon disparaît, une petite ville découvre une affaire mystérieuse, des expériences secrètes, des forces surnaturelles terrifiantes... et une fillette.', '60f9498f03a72.jpg'),
 (22, 'Sweet Tooth', '[\"Sweet Tooth\",\"Sweet\",\"Tooth\",\"Gus\",\"Jappered\"]', 'Dans un monde post-apocalyptique rempli de dangers, une adorable créature mi-cerf, mi-garçon aspire à un nouveau départ aux côtés d\'un protecteur bourru.', '60f949edadeb0.jpg'),
 (24, 'Breaking Bad', '[\"Breaking Bad\",\"Breaking\",\"Bad\",\"Walther White\",\"Walther\",\"White\"]', 'Un professeur de chimie atteint d\'un cancer s\'associe à un ancien élève pour fabriquer et vendre de la méthamphétamine afin d\'assurer l\'avenir financier de sa famille.', '61005545564cb.png'),
-(25, 'La casa de papel', '[\"Casa De Papel\",\"Papel\",\"Casa\",\"Professeur\",\"Berlin\",\"Tokyo\",\"Nairobi\",\"Denver\",\"Helsinki\"]', 'Huit voleurs font une prise d\'otages dans la Maison royale de la Monnaie d\'Espagne, tandis qu\'un génie du crime manipule la police pour mettre son plan à exécution.', '610055f6c7c03.jpg'),
+(25, 'La casa de papel', '[\"Casa De Papel\",\"Papel\",\"Casa\",\"Professeur\",\"Berlin\",\"Tokyo\",\"Nairobi\",\"Denver\",\"Helsinki\",\"CasadePapel\"]', 'Huit voleurs font une prise d\'otages dans la Maison royale de la Monnaie d\'Espagne, tandis qu\'un génie du crime manipule la police pour mettre son plan à exécution.', '610055f6c7c03.jpg'),
 (26, 'Brooklyn Nine-Nine', '[\"Brooklyn Nine-Nine\",\"Brooklyn\",\"Nine-Nine\",\"99\",\"Jake Peralta\",\"Peralta\"]', 'L’arrivée au commissariat d\'un capitaine très strict force Jake Peralta, jeune flic de Brooklyn brillant mais immature, à enfin obéir aux règles et travailler en équipe.', '61005697e2329.jpg'),
 (27, 'The Walking Dead', '[\"Walking Dead\",\"Walking\",\"Dead\",\"Rodeurs\",\"Rick Grimes\",\"Grimes\",\"Negan\"]', 'Dans un monde apocalyptique sous l\'emprise des zombies, des rescapés se rassemblent afin de lutter pour leur survie et de préserver leur humanité.', '610057ddb458a.jpg'),
-(30, 'Mes premières fois', '[\"Premi\\u00e8res Fois\",\"Nerver Have I Ever\",\"Devi Vishwakumar\",\"Vishwakuma\"]', 'Après une année traumatisante, une ado indo-américaine intello transparente décide de devenir hyper populaire. Mais rien, ni personne, ne lui facilite la tâche.', '61005a675ef38.jpg'),
+(30, 'Mes premières fois', '[\"Premi\\u00e8res Fois\",\"mespremieresfois\",\"premi\\u00e8re\",\"Never Have I Ever\",\"Devi Vishwakumar\",\"Vishwakuma\"]', 'Après une année traumatisante, une ado indo-américaine intello transparente décide de devenir hyper populaire. Mais rien, ni personne, ne lui facilite la tâche.', '61005a675ef38.jpg'),
 (31, 'Loki', '[\"Loki\",\"Thanos\",\"Tesseract\",\"Marvel\",\"Thor\",\"Odin\",\"Tom Hiddleston\",\"Hiddleston\"]', 'Le méchant lunatique Loki (Tom Hiddleston) reprend son rôle de dieu de la malice dans \"Loki\", la nouvelle série des studios Marvel qui se déroule après \"Avengers : Endgame\". Kate Herron en est la réalisatrice et Michael Waldron le principal scénariste.', '61005ca19e27c.jpg'),
 (32, 'Love, Victor', '[\"Love Victor\",\"Victor\",\"Benjy\",\"Victor Salazar\",\"Salazar\",\"Michael Cimino\",\"Cimino\"]', 'Quand la famille de Victor Salazar quitte le Texas rural pour s\'installer à Atlanta, il espère que son nouveau lycée dans une grande ville sera un endroit propice à sa quête identitaire et lui permettra de prendre un nouveau départ. Mais le jour de son arrivée au lycée de Creekwood, Victor se rend compte que les choses ne seront pas aussi simples et il prend contact avec Simon pour lui demander conseil.', '61005d2b5501b.jpg'),
-(33, 'The Mandalorian', '[\"Mandalorian\",\"Star Wars\",\"Empire\",\"Din Djarin\",\"Djarin\",\"Pedro Pascal\",\"Baby Yoda\",\"Yoda\",\"Sith\",\"Jedi\"]', 'Après la chute de l\'Empire, un chasseur de primes solitaire parcourt une galaxie sans foi ni loi.', '61005ed359de1.jpg'),
+(33, 'The Mandalorian', '[\"Mandalorian\",\"Star Wars\",\"StarWars\",\"Empire\",\"Din Djarin\",\"Djarin\",\"Pedro Pascal\",\"Baby Yoda\",\"Yoda\",\"Sith\",\"Jedi\",\"Lucasfilm\"]', 'Après la chute de l\'Empire, un chasseur de primes solitaire parcourt une galaxie sans foi ni loi.', '61005ed359de1.jpg'),
 (34, 'Dark', '[\"Dark\",\"Jonas Kahnwald\",\"Kahnwald\",\"Mikkel\",\"Ulrich Nielsen\",\"Nielsen\",\"Marta\"]', 'Quatre familles affolées par la disparition d\'un enfant cherchent des réponses et tombent sur un mystère impliquant trois générations qui finit de les déstabiliser.', '610151a998f9e.jpg');
 
 -- --------------------------------------------------------
@@ -255,7 +286,6 @@ INSERT INTO `series_categorie` (`series_id`, `categorie_id`) VALUES
 (5, 1),
 (16, 3),
 (19, 2),
-(19, 5),
 (22, 1),
 (22, 3),
 (24, 3),
@@ -345,16 +375,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `pseudo`, `keywords_bloque`, `series_bloque`) VALUES
-(4, 'benjamin_admin@mail.com', '[\"ROLE_ADMIN\"]', '$2y$13$O5OVxMg7iQnuZojRYdji2Og0kDDzZmigbTbll75yLIn3zQNQXaWri', 'Pepito', '[]', '[]'),
-(5, 'benjamin_user@mail.com', '[]', '$2y$13$pTYWARmvZF0QT3RAwrvc2.wtwaa8s3J5otJICk6L7PlNAmClMZIJe', 'Pepito', NULL, NULL),
-(6, 'test@mail.com', '[]', '$2y$13$/q4HfQeKFKFOSvlt8GJbMuBZQH2iGBcFB9QGvqvFARPIb.22XJmNa', 'test', '[\"Rick\",\" Morty\",\" AdultSwim \",\"Horreur\",\" Etrange\",\" Netflix\",\" Paranormal\",\" Monstres\",\"StrangerThings\",\" Stranger\",\" Things\",\"test\",\"test2\",\"test3\"]', '[\"Rick & Moty\",\"Stranger Things\",\"test\"]'),
-(7, 'nicuu@mail.com', '[]', '$2y$13$CEW024tnuzul9NKK2Gn5He/9t2H0Xiwjs9BNJ.Casvm7Czu9gCRxy', 'Oui', '[]', NULL),
-(8, 'benjamin.burkarth@hotmail.com', '[]', '$2y$13$VnfUMkEbhI44eprClt/uzulHGQlM8NQpVb/Q26E9P.GRlsvn4M4eW', 'Benjy', '[\"Horreur\",\"Etrange\",\"Paranormal\",\"StrangerThings\",\"Wanda\",\"Vision\",\"Marvel\"]', '[\"Stranger Things\",\"Wanda Vision\"]'),
-(9, 'mathis@mail.com', '[]', '$2y$13$XEbxKaeA7WmP2J5ZUiD1buYzqK8pUrv4juNB83FG/YbwYcLkjezdK', 'Gollum', '[]', '[]'),
-(10, 'testmail@mail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$md+Y8KdniukCnFZlzX35dA$b9ryj6XUniCK6d7aQjQOJVuOglEJdtaWfqhfh1XUZds', 'tosTESTas', NULL, NULL),
-(11, 'thisisatest@mail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$g/sv/l7/sbAD39NrsEvvOw$CoHd4Cir97+xj2ezsQxd0XekYmqQjtWjMVZBZwVZZyk', 'tosTESTas', NULL, NULL),
-(12, 'encoreuntest@mail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$+TjOW91My/o/NvXCium35Q$oQEANufWIjrTetLo+70e06wKxNL6ROSPgUOi8LPK6wY', 'testos', NULL, NULL),
-(13, 'mail@mail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$Aa5H9YfWQboXtMy5+UPADg$Q+KvnnXG0EqXlJsmx6/w2V97fSxMZvxs0g6yoxFAm0U', 'pepito', NULL, NULL);
+(4, 'benjamin_admin@mail.com', '[\"ROLE_ADMIN\"]', '$2y$13$O5OVxMg7iQnuZojRYdji2Og0kDDzZmigbTbll75yLIn3zQNQXaWri', 'Pepito', '[]', '[]');
 
 -- --------------------------------------------------------
 
@@ -376,20 +397,7 @@ INSERT INTO `user_genre` (`user_id`, `genre_id`) VALUES
 (4, 5),
 (4, 6),
 (4, 8),
-(4, 9),
-(6, 1),
-(6, 5),
-(6, 6),
-(6, 8),
-(6, 9),
-(7, 5),
-(8, 8),
-(9, 5),
-(9, 8),
-(9, 9),
-(11, 6),
-(12, 1),
-(13, 8);
+(4, 9);
 
 --
 -- Index pour les tables déchargées
@@ -495,13 +503,13 @@ ALTER TABLE `lock_main`
 -- AUTO_INCREMENT pour la table `lock_question`
 --
 ALTER TABLE `lock_question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT pour la table `publications`
 --
 ALTER TABLE `publications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT pour la table `series`
@@ -513,7 +521,7 @@ ALTER TABLE `series`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Contraintes pour les tables déchargées
